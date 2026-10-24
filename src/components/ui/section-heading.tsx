@@ -16,7 +16,7 @@ export function SectionHeading({
   id?: string;
 }) {
   return (
-    <div className="editorial-rule mb-6 flex flex-wrap items-end justify-between gap-3">
+    <div className="section-heading mb-6 flex flex-wrap items-end justify-between gap-3">
       <div>
         {kicker ? <p className="kicker mb-1">{kicker}</p> : null}
         <h2 id={id} className="text-2xl leading-tight sm:text-3xl">

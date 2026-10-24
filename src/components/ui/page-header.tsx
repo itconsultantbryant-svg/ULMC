@@ -12,8 +12,8 @@ export function PageHeader({
   children?: ReactNode;
 }) {
   return (
-    <header className="border-b border-line bg-mist/50">
-      <div className="container-page py-10 sm:py-12">
+    <header className="page-masthead border-b border-line">
+      <div className="container-page py-10 sm:py-14">
         <div className="max-w-3xl">
           {kicker ? <p className="kicker mb-2">{kicker}</p> : null}
           <h1 className="text-balance text-3xl leading-[1.1] sm:text-4xl lg:text-[2.9rem]">{title}</h1>

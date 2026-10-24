@@ -48,13 +48,13 @@ export function NewStoryForm({
           contentType,
         }),
       });
-      const payload = (await response.json()) as { id?: string; error?: string };
-      if (!response.ok || !payload.id) {
+      const payload = (await response.json()) as { articleId?: string; error?: string };
+      if (!response.ok || !payload.articleId) {
         setError(payload.error ?? "We could not create the story.");
         setSubmitting(false);
         return;
       }
-      router.push(`/studio/articles/${payload.id}`);
+      router.push(`/studio/articles/${payload.articleId}`);
       router.refresh();
     } catch {
       setError("Network error. Please try again.");

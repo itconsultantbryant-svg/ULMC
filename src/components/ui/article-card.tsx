@@ -15,10 +15,10 @@ function Hero({
   if (!article.hero) {
     return (
       <div
-        className={`flex items-center justify-center bg-navy-tint ${className}`}
+        className={`article-placeholder flex items-center justify-center ${className}`}
         aria-hidden="true"
       >
-        <span className="font-serif text-3xl font-semibold tracking-tight text-navy/25">VP</span>
+        <span className="font-serif text-3xl font-semibold tracking-tight text-white/80">VP</span>
       </div>
     );
   }

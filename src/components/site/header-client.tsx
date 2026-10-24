@@ -149,7 +149,7 @@ export function HeaderClient({
         </div>
       </div>
 
-      <div className="container-page grid items-center gap-4 py-4 sm:grid-cols-[1fr_auto_1fr] sm:py-5">
+      <div className="container-page grid items-center gap-4 py-5 sm:grid-cols-[1fr_auto_1fr] sm:py-6">
         <p className="hidden text-[0.63rem] font-semibold uppercase leading-relaxed tracking-[0.16em] text-muted sm:block">
           Lux In Tenebris
           <span className="mt-1 block font-normal normal-case tracking-normal text-muted/80">
@@ -212,18 +212,19 @@ export function HeaderClient({
       </nav>
 
       {showAnnouncement ? (
-        <div className="border-t border-line bg-red-tint">
-          <div className="container-page flex items-start gap-3 py-2 text-[0.82rem] text-ink">
-            <span className="ticker-dot mt-1.5" aria-hidden="true" />
-            <p className="flex-1">
-              <span className="font-semibold">Announcement: </span>
+        <div className="news-rail border-t border-navy-deep">
+          <div className="container-page relative flex items-start gap-3 py-2.5 text-[0.82rem] text-white">
+            <span className="relative z-10 hidden min-w-20 text-[0.68rem] font-black uppercase tracking-[0.13em] sm:block">Breaking</span>
+            <span className="ticker-dot mt-1.5 bg-white" aria-hidden="true" />
+            <p className="flex-1 text-white/90">
+              <span className="font-semibold text-white">Campus update: </span>
               {announcement.message}
               {announcement.linkUrl && announcement.linkLabel ? (
                 <>
                   {" "}
                   <a
                     href={announcement.linkUrl}
-                    className="font-semibold text-red-deep underline"
+                    className="font-semibold text-white underline decoration-white/50"
                     rel="noopener noreferrer"
                   >
                     {announcement.linkLabel}
@@ -234,7 +235,7 @@ export function HeaderClient({
             <button
               type="button"
               onClick={dismissAnnouncement}
-              className="rounded p-1 text-muted hover:bg-white hover:text-ink"
+              className="rounded p-1 text-white/65 hover:bg-white/10 hover:text-white"
               aria-label="Dismiss announcement"
             >
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true">

@@ -31,9 +31,9 @@ export default async function HomePage() {
       </h1>
 
       <section className="border-b border-line bg-mist/60">
-        <div className="container-page py-8 lg:py-10">
+        <div className="container-page py-8 lg:py-12">
           {lead ? (
-            <div className="grid gap-8 lg:grid-cols-[minmax(0,1fr)_19rem] lg:gap-10">
+            <div className="grid gap-8 lg:grid-cols-[minmax(0,1fr)_20rem] lg:gap-12">
               <div>
                 <div className="mb-4 flex items-center gap-2">
                   <span className="ticker-dot" aria-hidden="true" />
@@ -126,7 +126,7 @@ export default async function HomePage() {
         </div>
       </section>
 
-      <div className="container-page grid gap-10 py-10 lg:grid-cols-[minmax(0,1fr)_19rem] lg:gap-12">
+      <div className="container-page grid gap-10 py-12 lg:grid-cols-[minmax(0,1fr)_20rem] lg:gap-12">
         <div>
           <SectionHeading
             kicker="Across the department"
@@ -166,7 +166,7 @@ export default async function HomePage() {
         </div>
 
         <aside className="space-y-8">
-          <section className="rounded-md border border-line bg-mist/70 p-5">
+          <section className="rounded-2xl border border-line bg-mist/70 p-5 shadow-soft">
             <h2 className="font-serif text-xl leading-tight text-navy">Study communication at UL</h2>
             <p className="mt-2 text-sm leading-relaxed text-muted">
               Earn a BA in Communication and Media with specialised tracks in print and broadcast
@@ -182,7 +182,7 @@ export default async function HomePage() {
             <EventList events={events} compact />
           </section>
 
-          <section className="border-t-4 border-red bg-navy p-5 text-white">
+          <section className="relative overflow-hidden rounded-2xl border-t-4 border-red bg-navy p-5 text-white shadow-lift">
             <p className="kicker text-red-tint">Student work</p>
             <h2 className="mt-1 font-serif text-xl leading-tight text-white">
               Reporting by students, for the campus and community

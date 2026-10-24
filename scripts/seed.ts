@@ -6,7 +6,9 @@ import {
   academicPage,
   account,
   announcement,
+  article,
   category,
+  event,
   facultyProfile,
   sitePage,
   siteSetting,
@@ -17,6 +19,14 @@ import { auth } from "@/server/auth";
 import { slugify } from "@/server/ids";
 import { DEFAULT_SETTINGS, SETTINGS_KEY } from "@/server/settings";
 import { team } from "@/content/team";
+import {
+  adminDecision,
+  createArticle,
+  editorialApprove,
+  publishNow,
+  startEditorialReview,
+  submitForReview,
+} from "@/server/workflow/service";
 
 loadEnv();
 
@@ -113,6 +123,159 @@ const academics = [
   },
 ];
 
+async function ensureSeedUser(input: { email: string; name: string; role: "staff" | "editor" | "admin"; title: string }) {
+  const [existing] = await db.select({ id: user.id }).from(user).where(eq(user.email, input.email)).limit(1);
+  if (existing) return existing;
+  const [created] = await db
+    .insert(user)
+    .values({
+      id: randomUUID(),
+      email: input.email,
+      name: input.name,
+      role: input.role,
+      title: input.title,
+      slug: slugify(input.name),
+      emailVerified: true,
+    })
+    .returning({ id: user.id });
+  if (!created) throw new Error(`Could not create seed user ${input.email}`);
+  return created;
+}
+
+async function seedPublicDemoContent() {
+  const writer = await ensureSeedUser({
+    email: "amara.kamara@ulmc.demo",
+    name: "Amara Kamara",
+    role: "staff",
+    title: "Student Reporter",
+  });
+  const editor = await ensureSeedUser({
+    email: "daniel.sesay@ulmc.demo",
+    name: "Daniel Sesay",
+    role: "editor",
+    title: "News Editor",
+  });
+  const admin = await ensureSeedUser({
+    email: "grace.taylor@ulmc.demo",
+    name: "Grace Taylor",
+    role: "admin",
+    title: "Managing Editor",
+  });
+
+  const categoryRows = await db.select({ id: category.id, slug: category.slug }).from(category);
+  const categoryId = new Map(categoryRows.map((row) => [row.slug, row.id]));
+  const stories = [
+    {
+      slug: "student-reporters-open-community-media-desk",
+      title: "Student reporters open a community media desk at Fendell",
+      summary: "The new weekly desk gives students a practical place to report campus issues, interview residents and publish verified updates.",
+      category: "campus",
+      contentType: "student" as const,
+      bodyHtml: "<p>Student journalists at the Department of Communication and Media Studies have opened a weekly community media desk at Fendell Campus. The desk connects classroom reporting with the questions students and nearby residents want answered.</p><p>Each edition is produced with faculty guidance and published after the newsroom's editorial review process. The project is designed to strengthen reporting, listening and public-service journalism.</p>",
+    },
+    {
+      slug: "media-lab-expands-digital-storytelling-training",
+      title: "Media lab expands digital storytelling training for the new semester",
+      summary: "A refreshed newsroom lab is giving students more space to practise mobile reporting, audio editing and audience-first publishing.",
+      category: "education",
+      contentType: "education" as const,
+      bodyHtml: "<p>The Department's media lab is beginning the semester with new practical sessions in mobile reporting, audio production and visual storytelling. Students will use the lab to develop reporting projects for The Varsity Pilot and Lux FM.</p><p>Faculty members say the work is focused on the habits that matter in a modern newsroom: accuracy, accessibility, strong sourcing and a clear understanding of audience needs.</p>",
+    },
+    {
+      slug: "campus-debate-asks-how-young-people-can-shape-public-life",
+      title: "Campus debate asks how young people can shape public life",
+      summary: "Students and guests gathered for a lively conversation about public trust, civic participation and the responsibility of the media.",
+      category: "media-society",
+      contentType: "feature" as const,
+      bodyHtml: "<p>A packed campus forum brought students, journalists and civil-society guests together to discuss how young people can take part in public life. Speakers returned repeatedly to the value of verified information and respectful disagreement.</p><p>Participants left with a practical challenge: ask better questions, listen to competing views and use media platforms to serve communities rather than simply chase attention.</p>",
+    },
+    {
+      slug: "varsity-pilot-sports-desk-looks-ahead-to-interfaculty-games",
+      title: "Varsity Pilot sports desk looks ahead to the interfaculty games",
+      summary: "Student reporters are preparing live updates and profiles as teams across the University of Liberia begin a new interfaculty season.",
+      category: "sports",
+      contentType: "campus" as const,
+      bodyHtml: "<p>The interfaculty games are returning with a full schedule of football, basketball and athletics. The Varsity Pilot sports desk will cover the competition with match reports, photo essays and conversations with student athletes.</p><p>Editors say the coverage will focus on the people behind the scorelines as well as the results.</p>",
+    },
+    {
+      slug: "why-campus-newsrooms-still-matter",
+      title: "Why campus newsrooms still matter",
+      summary: "A strong student newsroom gives emerging journalists the space to learn accountability, empathy and the discipline of getting the story right.",
+      category: "opinion",
+      contentType: "opinion" as const,
+      bodyHtml: "<p>Campus journalism is more than an extracurricular activity. It is a public-service laboratory where young reporters learn to check facts, seek out people affected by decisions and correct mistakes openly.</p><p>When student reporting is supported with careful editing and ethical standards, it makes the university community more informed and more connected.</p>",
+    },
+  ];
+
+  for (const story of stories) {
+    const [existing] = await db.select({ id: article.id }).from(article).where(eq(article.slug, story.slug)).limit(1);
+    if (existing) continue;
+    const categoryIdForStory = categoryId.get(story.category);
+    if (!categoryIdForStory) throw new Error(`Missing seed category ${story.category}`);
+    const created = await createArticle(writer.id, {
+      title: story.title,
+      summary: story.summary,
+      bodyHtml: story.bodyHtml,
+      categoryId: categoryIdForStory,
+      contentType: story.contentType,
+      authorIds: [writer.id],
+      tagNames: ["varsity pilot", "campus", "journalism"],
+      slug: story.slug,
+    });
+    await submitForReview(writer.id, { articleId: created.articleId, revisionId: created.revisionId, expectedVersion: 1 });
+    await startEditorialReview(editor.id, { articleId: created.articleId, revisionId: created.revisionId });
+    await editorialApprove(editor.id, {
+      articleId: created.articleId,
+      revisionId: created.revisionId,
+      checklist: {
+        sources_verified: true,
+        image_rights: true,
+        captions_credit: true,
+        accessibility: true,
+        quality: true,
+      },
+      note: "Seeded demonstration story reviewed for the public interface.",
+    });
+    await adminDecision(admin.id, { articleId: created.articleId, revisionId: created.revisionId, decision: "approve" });
+    await publishNow(admin.id, { articleId: created.articleId, revisionId: created.revisionId });
+  }
+
+  const startsAt = new Date(Date.now() + 7 * 24 * 60 * 60 * 1000);
+  const eventFixtures = [
+    {
+      slug: "open-newsroom-and-story-clinic",
+      title: "Open Newsroom & Story Clinic",
+      summary: "Bring a campus story idea, meet the Varsity Pilot desk and learn how to pitch, report and publish it.",
+      venue: "MassComm Building, Fendell Campus",
+      organizer: "The Varsity Pilot",
+      startsAt,
+    },
+    {
+      slug: "media-careers-conversation",
+      title: "Media Careers: A Conversation with Practitioners",
+      summary: "An evening conversation about building a responsible, creative career in journalism and communication.",
+      venue: "University of Liberia Auditorium",
+      organizer: "Department of Communication and Media Studies",
+      startsAt: new Date(startsAt.getTime() + 7 * 24 * 60 * 60 * 1000),
+    },
+  ];
+  for (const item of eventFixtures) {
+    await db
+      .insert(event)
+      .values({
+        ...item,
+        descriptionHtml: `<p>${item.summary}</p>`,
+        isPublished: true,
+        isFeatured: true,
+        createdBy: admin.id,
+      })
+      .onConflictDoUpdate({
+        target: event.slug,
+        set: { ...item, descriptionHtml: `<p>${item.summary}</p>`, isPublished: true, isFeatured: true, updatedAt: new Date() },
+      });
+  }
+}
+
 async function main() {
   const rows = await db.select({ value: count() }).from(user);
   const userCount = Number(rows[0]?.value ?? 0);
@@ -168,6 +331,8 @@ async function main() {
         },
       });
   }
+
+  await seedPublicDemoContent();
 
   const tags = ["varsity pilot", "journalism", "liberia", "university of liberia", "campus", "media"];
   for (const t of tags) {
@@ -285,10 +450,7 @@ async function main() {
   await db
     .insert(siteSetting)
     .values({ key: SETTINGS_KEY, value: DEFAULT_SETTINGS })
-    .onConflictDoUpdate({
-      target: siteSetting.key,
-      set: { value: DEFAULT_SETTINGS, updatedAt: new Date() },
-    });
+    .onConflictDoNothing({ target: siteSetting.key });
 
   const welcome = "Welcome to The Varsity Pilot online — the student newspaper of the Department of Communication and Media Studies.";
   const existing = await db

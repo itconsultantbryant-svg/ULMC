@@ -323,6 +323,38 @@
     padding-top: 0.45rem;
   }
 
+  .page-masthead {
+    background:
+      radial-gradient(circle at 92% 12%, rgba(201, 0, 22, 0.12), transparent 20rem),
+      linear-gradient(115deg, #f4f6fb 0%, #ffffff 58%, #f9f0f1 100%);
+  }
+
+  .section-heading {
+    border-top: 3px solid var(--color-navy);
+    padding-top: 0.65rem;
+  }
+
+  .article-placeholder {
+    background:
+      linear-gradient(135deg, rgba(10, 10, 56, 0.15), rgba(201, 0, 22, 0.12)),
+      repeating-linear-gradient(135deg, #10104f 0 9px, #171762 9px 18px);
+  }
+
+  .news-rail {
+    position: relative;
+    overflow: hidden;
+    background: #0a0a38;
+    color: white;
+  }
+
+  .news-rail::before {
+    content: "";
+    position: absolute;
+    inset: 0 auto 0 0;
+    width: 8rem;
+    background: linear-gradient(90deg, #c90016, #d72a3d);
+  }
+
   /* ---------------- Article typography ---------------- */
   .prose-article {
     font-family: var(--font-serif);

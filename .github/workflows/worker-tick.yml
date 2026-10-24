@@ -1,0 +1,23 @@
+name: Process scheduled work
+
+on:
+  schedule:
+    - cron: "*/5 * * * *"
+  workflow_dispatch:
+
+permissions: {}
+
+jobs:
+  tick:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Run the production worker tick
+        env:
+          TICK_URL: ${{ secrets.VERCEL_TICK_URL }}
+          CRON_SECRET: ${{ secrets.CRON_SECRET }}
+        run: |
+          test -n "$TICK_URL"
+          test -n "$CRON_SECRET"
+          curl --fail --silent --show-error --retry 2 \
+            --header "Authorization: Bearer $CRON_SECRET" \
+            "$TICK_URL"

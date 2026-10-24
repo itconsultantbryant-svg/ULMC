@@ -44,7 +44,18 @@ ANALYTICS_ACTIVE_WINDOW_MINUTES=5
 ANALYTICS_RETENTION_DAYS=180
 ```
 
-`CRON_SECRET` authorizes the Vercel cron call to `/api/internal/tick`. The cron runs every five minutes and safely processes queued publishing, outbox, and maintenance work. Database row locks ensure that an accidental overlapping request does not duplicate work.
+## Scheduled work on Vercel Hobby
+
+Vercel Hobby only permits one Vercel Cron invocation per day, which is not sufficient for scheduled publishing and outbox delivery. This repository deliberately does not configure Vercel Cron.
+
+Instead, the committed GitHub Actions workflow at `.github/workflows/worker-tick.yml` invokes the same secure worker endpoint every five minutes. In the GitHub repository, add these Actions secrets:
+
+```dotenv
+VERCEL_TICK_URL=https://<your-vercel-domain>/api/internal/tick
+CRON_SECRET=<the exact same value configured in Vercel>
+```
+
+The endpoint processes queued publication, outbox, and maintenance work. Database row locks make overlapping requests safe. GitHub Actions schedules are best-effort and may run a few minutes late; use **Actions > Process scheduled work > Run workflow** to trigger it manually when needed.
 
 For Vercel-managed environment setup, use `vercel env add <VARIABLE> production` for each secret rather than committing any `.env` file.
 
@@ -52,5 +63,6 @@ For Vercel-managed environment setup, use `vercel env add <VARIABLE> production`
 
 1. Open `/api/health` and confirm `{ "ok": true }`.
 2. Sign in at `/studio/login`, create a draft, and verify the editorial workflow.
-3. Publish or schedule a story and verify that it appears on the public site after the next cron tick.
-4. Confirm production media uses S3-compatible storage. Local storage is not durable on Vercel.
+3. Add the two GitHub Actions secrets above, then run **Process scheduled work** manually and verify a successful run.
+4. Publish or schedule a story and verify that it appears on the public site after the next worker tick.
+5. Confirm production media uses S3-compatible storage. Local storage is not durable on Vercel.

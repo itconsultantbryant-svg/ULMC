@@ -208,8 +208,22 @@ async function seedPublicDemoContent() {
   ];
 
   for (const story of stories) {
-    const [existing] = await db.select({ id: article.id }).from(article).where(eq(article.slug, story.slug)).limit(1);
-    if (existing) continue;
+    const [existing] = await db
+      .select({
+        id: article.id,
+        workflowStatus: article.workflowStatus,
+        publishedRevisionId: article.publishedRevisionId,
+        workingRevisionId: article.workingRevisionId,
+      })
+      .from(article)
+      .where(eq(article.slug, story.slug))
+      .limit(1);
+    if (existing) {
+      if (!existing.publishedRevisionId && existing.workflowStatus === "admin_approved" && existing.workingRevisionId) {
+        await publishNow(admin.id, { articleId: existing.id, revisionId: existing.workingRevisionId });
+      }
+      continue;
+    }
     const categoryIdForStory = categoryId.get(story.category);
     if (!categoryIdForStory) throw new Error(`Missing seed category ${story.category}`);
     const created = await createArticle(writer.id, {

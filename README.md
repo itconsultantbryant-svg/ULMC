@@ -21,3 +21,4 @@ All database and worker scripts load `.env` automatically via `tsx --env-file=.e
 - Workflow enforces separation of duties (author cannot approve own story).
 - Two-factor required for privileged roles when enabled in settings.
 - Media served via `/media/[id]`; private assets require auth.
+- Deployment details, Vercel environment variables, and the serverless worker cron are in [`docs/VERCEL_DEPLOYMENT.md`](docs/VERCEL_DEPLOYMENT.md).

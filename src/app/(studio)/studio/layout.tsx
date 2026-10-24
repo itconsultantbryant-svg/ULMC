@@ -20,12 +20,13 @@ export default async function StudioLayout({ children }: { children: React.React
   const counts = await getStudioCounts(user);
 
   const nav: StudioNavItem[] = [
-    { href: "/studio", label: "Dashboard", icon: "dashboard", exact: true },
+    { href: "/studio", label: "Dashboard", icon: "dashboard", exact: true, group: "Create" },
     {
       href: "/studio/articles",
       label: "Stories",
       icon: "articles",
       badge: counts.myDrafts,
+      group: "Create",
     },
   ];
 
@@ -35,6 +36,7 @@ export default async function StudioLayout({ children }: { children: React.React
       label: "Editorial review",
       icon: "review",
       badge: counts.review,
+      group: "Manage",
     });
   }
   if (can(user, "admin.viewApprovalQueue")) {
@@ -43,6 +45,7 @@ export default async function StudioLayout({ children }: { children: React.React
       label: "Approvals",
       icon: "approvals",
       badge: counts.approvals,
+      group: "Manage",
     });
   }
   if (can(user, "comments.moderate")) {
@@ -51,26 +54,27 @@ export default async function StudioLayout({ children }: { children: React.React
       label: "Comments",
       icon: "comments",
       badge: counts.pendingComments,
+      group: "Manage",
     });
   }
   if (can(user, "media.upload")) {
-    nav.push({ href: "/studio/media", label: "Media", icon: "media" });
+    nav.push({ href: "/studio/media", label: "Media", icon: "media", group: "Create" });
   }
-  nav.push({ href: "/studio/analytics", label: "Analytics", icon: "analytics" });
+  nav.push({ href: "/studio/analytics", label: "Analytics", icon: "analytics", group: "Measure" });
   if (can(user, "users.view")) {
-    nav.push({ href: "/studio/users", label: "People", icon: "users" });
+    nav.push({ href: "/studio/users", label: "People", icon: "users", group: "System" });
   }
   if (can(user, "events.manage")) {
-    nav.push({ href: "/studio/events", label: "Events", icon: "events" });
+    nav.push({ href: "/studio/events", label: "Events", icon: "events", group: "Manage" });
   }
   if (can(user, "homepage.manage") || can(user, "institutional.manage")) {
-    nav.push({ href: "/studio/content", label: "Department content", icon: "content" });
+    nav.push({ href: "/studio/content", label: "Department content", icon: "content", group: "Manage" });
   }
   if (can(user, "settings.manage")) {
-    nav.push({ href: "/studio/settings", label: "Settings", icon: "settings" });
+    nav.push({ href: "/studio/settings", label: "Settings", icon: "settings", group: "System" });
   }
   if (can(user, "audit.view")) {
-    nav.push({ href: "/studio/audit", label: "Audit log", icon: "audit" });
+    nav.push({ href: "/studio/audit", label: "Audit log", icon: "audit", group: "System" });
   }
 
   return (

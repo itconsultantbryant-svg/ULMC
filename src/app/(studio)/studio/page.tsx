@@ -59,17 +59,20 @@ export default async function StudioDashboard() {
 
   return (
     <div className="space-y-8">
-      <header className="flex flex-wrap items-end justify-between gap-4">
-        <div>
+      <header className="surface-grid relative overflow-hidden rounded-2xl border border-line bg-white px-5 py-6 shadow-soft sm:px-7 sm:py-7">
+        <div className="absolute -right-12 -top-16 h-44 w-44 rounded-full bg-red/5 blur-2xl" aria-hidden />
+        <div className="relative flex flex-wrap items-end justify-between gap-4">
+          <div>
           <p className="kicker">{today}</p>
           <h1 className="mt-1 text-2xl leading-tight sm:text-3xl">Good to see you, {user.name.split(" ")[0]}.</h1>
           <p className="mt-1 text-sm text-muted">
             Everything assigned to you, plus the queues that need attention today.
           </p>
         </div>
-        <Link href="/studio/articles/new" className="btn btn-primary">
-          Start a new story
-        </Link>
+          <Link href="/studio/articles/new" className="btn btn-primary">
+            Start a new story
+          </Link>
+        </div>
       </header>
 
       <section aria-label="Work overview" className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
@@ -79,7 +82,7 @@ export default async function StudioDashboard() {
             <Link
               key={stat.label}
               href={stat.href}
-              className="group rounded-lg border border-line bg-white p-5 shadow-sm transition-shadow hover:shadow-md"
+              className="card group p-5"
             >
               <div className="flex items-start justify-between">
                 <p className="text-xs font-semibold uppercase tracking-wide text-muted">{stat.label}</p>
@@ -157,7 +160,7 @@ export default async function StudioDashboard() {
         </section>
 
         <div className="space-y-6">
-          <section className="rounded-lg border border-line bg-white p-5">
+          <section className="rounded-2xl border border-line bg-white p-5 shadow-soft">
             <h2 className="text-lg">How publishing works</h2>
             <ol className="mt-4 space-y-3 text-sm">
               {[
@@ -183,7 +186,7 @@ export default async function StudioDashboard() {
             </p>
           </section>
 
-          <section className="rounded-lg border border-line bg-white">
+          <section className="overflow-hidden rounded-2xl border border-line bg-white shadow-soft">
             <div className="flex items-center justify-between border-b border-line px-5 py-4">
               <h2 className="text-lg">Notifications</h2>
               <Link href="/studio/notifications" className="text-xs font-semibold text-navy hover:text-red">

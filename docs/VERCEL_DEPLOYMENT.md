@@ -9,10 +9,10 @@
 
 ## Environment variables
 
-Use the Neon CLI without printing the value to retrieve the production connection string:
+Use the Neon CLI without printing the value to retrieve the production pooled connection string. Pooling is required for Vercel's serverless runtime:
 
 ```bash
-neon connection-string --project-id fragrant-term-52448867 --role-name ulmc_owner --database-name ulmc
+neon connection-string --pooled --project-id fragrant-term-52448867 --role-name ulmc_owner --database-name ulmc
 ```
 
 Set these in Vercel. Values marked `generate` must be unique production secrets.
@@ -58,6 +58,17 @@ CRON_SECRET=<the exact same value configured in Vercel>
 The endpoint processes queued publication, outbox, and maintenance work. Database row locks make overlapping requests safe. GitHub Actions schedules are best-effort and may run a few minutes late; use **Actions > Process scheduled work > Run workflow** to trigger it manually when needed.
 
 For Vercel-managed environment setup, use `vercel env add <VARIABLE> production` for each secret rather than committing any `.env` file.
+
+## Production database troubleshooting
+
+If the deployed `/api/health` endpoint returns `503` or the public site shows a Server Components render error, Vercel cannot reach the production database. Fix the environment before investigating React or CSS:
+
+1. In **Vercel > Project > Settings > Environment Variables**, replace `DATABASE_URL` for the **Production** environment with the pooled Neon URI from the command above. It must use the Neon hostname and end in `sslmode=require`; never use `localhost`, `127.0.0.1`, or a local `.pgdata` URI.
+2. Confirm `NEXT_PUBLIC_SITE_URL` and `BETTER_AUTH_URL` are both `https://vasitynews.vercel.app` (or the final custom production domain).
+3. Redeploy from the Vercel dashboard so the function receives the updated variables.
+4. Open `https://vasitynews.vercel.app/api/health`. It must return `{ "ok": true, ... }` before testing the homepage or Studio.
+
+The browser CSS preload message is non-fatal. It is a side effect of the server render aborting and will clear once the page renders successfully.
 
 ## Deployment verification
 

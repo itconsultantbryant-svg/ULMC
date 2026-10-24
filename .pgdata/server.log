@@ -1,0 +1,187 @@
+2026-10-22 17:09:36.758 GMT [16959] LOG:  starting PostgreSQL 15.15 (Homebrew) on x86_64-apple-darwin21.6.0, compiled by Apple clang version 14.0.0 (clang-1400.0.29.202), 64-bit
+2026-10-22 17:09:36.779 GMT [16959] LOG:  listening on IPv6 address "::1", port 5433
+2026-10-22 17:09:36.779 GMT [16959] LOG:  listening on IPv4 address "127.0.0.1", port 5433
+2026-10-22 17:09:36.782 GMT [16959] LOG:  listening on Unix socket "/tmp/.s.PGSQL.5433"
+2026-10-22 17:09:36.797 GMT [16962] LOG:  database system was shut down at 2026-10-22 17:09:36 GMT
+2026-10-22 17:09:36.814 GMT [16959] LOG:  database system is ready to accept connections
+2026-10-22 17:14:36.827 GMT [16960] LOG:  checkpoint starting: time
+2026-10-22 17:16:18.221 GMT [16960] LOG:  checkpoint complete: wrote 958 buffers (5.8%); 0 WAL file(s) added, 0 removed, 0 recycled; write=101.172 s, sync=0.123 s, total=101.379 s; sync files=309, longest=0.019 s, average=0.001 s; distance=4444 kB, estimate=4444 kB
+2026-10-22 17:44:36.513 GMT [16960] LOG:  checkpoint starting: time
+2026-10-22 17:45:03.442 GMT [16960] LOG:  checkpoint complete: wrote 260 buffers (1.6%); 0 WAL file(s) added, 0 removed, 0 recycled; write=26.804 s, sync=0.077 s, total=26.971 s; sync files=301, longest=0.014 s, average=0.001 s; distance=2040 kB, estimate=4203 kB
+2026-10-22 17:54:36.480 GMT [16960] LOG:  checkpoint starting: time
+2026-10-22 17:54:41.676 GMT [16960] LOG:  checkpoint complete: wrote 51 buffers (0.3%); 0 WAL file(s) added, 0 removed, 0 recycled; write=5.164 s, sync=0.009 s, total=5.209 s; sync files=33, longest=0.002 s, average=0.001 s; distance=264 kB, estimate=3809 kB
+2026-10-22 18:32:38.263 GMT [16960] LOG:  checkpoint starting: time
+2026-10-22 18:32:42.542 GMT [16960] LOG:  checkpoint complete: wrote 39 buffers (0.2%); 0 WAL file(s) added, 0 removed, 0 recycled; write=4.200 s, sync=0.019 s, total=4.286 s; sync files=35, longest=0.006 s, average=0.001 s; distance=201 kB, estimate=3448 kB
+2026-10-22 22:25:45.121 GMT [36241] FATAL:  lock file "postmaster.pid" already exists
+2026-10-22 22:25:45.121 GMT [36241] HINT:  Is another postmaster (PID 16959) running in data directory "/Users/user/Desktop/websites/ULMC/.pgdata"?
+2026-10-22 22:26:03.603 GMT [36294] FATAL:  role "user" does not exist
+2026-10-22 22:38:35.641 GMT [16960] LOG:  checkpoint starting: time
+2026-10-22 22:38:37.299 GMT [16960] LOG:  checkpoint complete: wrote 14 buffers (0.1%); 1 WAL file(s) added, 0 removed, 0 recycled; write=1.551 s, sync=0.002 s, total=1.662 s; sync files=7, longest=0.001 s, average=0.001 s; distance=49 kB, estimate=3108 kB
+2026-10-22 22:43:35.304 GMT [16960] LOG:  checkpoint starting: time
+2026-10-22 22:43:37.695 GMT [16960] LOG:  checkpoint complete: wrote 24 buffers (0.1%); 0 WAL file(s) added, 0 removed, 0 recycled; write=2.353 s, sync=0.015 s, total=2.393 s; sync files=13, longest=0.005 s, average=0.002 s; distance=32 kB, estimate=2801 kB
+2026-10-22 22:48:35.719 GMT [16960] LOG:  checkpoint starting: time
+2026-10-22 22:48:36.574 GMT [16960] LOG:  checkpoint complete: wrote 9 buffers (0.1%); 0 WAL file(s) added, 0 removed, 0 recycled; write=0.824 s, sync=0.003 s, total=0.859 s; sync files=9, longest=0.002 s, average=0.001 s; distance=15 kB, estimate=2522 kB
+2026-10-22 22:53:35.580 GMT [16960] LOG:  checkpoint starting: time
+2026-10-22 22:53:38.670 GMT [16960] LOG:  checkpoint complete: wrote 30 buffers (0.2%); 0 WAL file(s) added, 0 removed, 0 recycled; write=3.058 s, sync=0.012 s, total=3.092 s; sync files=23, longest=0.003 s, average=0.001 s; distance=125 kB, estimate=2282 kB
+2026-10-22 22:58:35.684 GMT [16960] LOG:  checkpoint starting: time
+2026-10-22 22:58:36.562 GMT [16960] LOG:  checkpoint complete: wrote 9 buffers (0.1%); 0 WAL file(s) added, 0 removed, 0 recycled; write=0.841 s, sync=0.019 s, total=0.882 s; sync files=9, longest=0.009 s, average=0.003 s; distance=44 kB, estimate=2059 kB
+2026-10-22 23:03:35.572 GMT [16960] LOG:  checkpoint starting: time
+2026-10-22 23:03:36.620 GMT [16960] LOG:  checkpoint complete: wrote 11 buffers (0.1%); 0 WAL file(s) added, 0 removed, 0 recycled; write=1.020 s, sync=0.004 s, total=1.054 s; sync files=10, longest=0.002 s, average=0.001 s; distance=48 kB, estimate=1858 kB
+2026-10-22 23:08:35.624 GMT [16960] LOG:  checkpoint starting: time
+2026-10-22 23:08:38.301 GMT [16960] LOG:  checkpoint complete: wrote 26 buffers (0.2%); 0 WAL file(s) added, 0 removed, 0 recycled; write=2.639 s, sync=0.006 s, total=2.679 s; sync files=17, longest=0.002 s, average=0.001 s; distance=111 kB, estimate=1683 kB
+2026-10-22 23:13:35.314 GMT [16960] LOG:  checkpoint starting: time
+2026-10-22 23:13:36.217 GMT [16960] LOG:  checkpoint complete: wrote 9 buffers (0.1%); 0 WAL file(s) added, 0 removed, 0 recycled; write=0.865 s, sync=0.003 s, total=0.912 s; sync files=9, longest=0.002 s, average=0.001 s; distance=49 kB, estimate=1520 kB
+2026-10-22 23:18:35.226 GMT [16960] LOG:  checkpoint starting: time
+2026-10-22 23:18:39.884 GMT [16960] LOG:  checkpoint complete: wrote 45 buffers (0.3%); 0 WAL file(s) added, 0 removed, 0 recycled; write=4.608 s, sync=0.014 s, total=4.659 s; sync files=15, longest=0.004 s, average=0.001 s; distance=158 kB, estimate=1383 kB
+2026-10-22 23:23:35.898 GMT [16960] LOG:  checkpoint starting: time
+2026-10-22 23:23:38.783 GMT [16960] LOG:  checkpoint complete: wrote 28 buffers (0.2%); 0 WAL file(s) added, 0 removed, 0 recycled; write=2.861 s, sync=0.009 s, total=2.889 s; sync files=17, longest=0.006 s, average=0.001 s; distance=112 kB, estimate=1256 kB
+2026-10-22 23:28:35.790 GMT [16960] LOG:  checkpoint starting: time
+2026-10-22 23:28:36.939 GMT [16960] LOG:  checkpoint complete: wrote 12 buffers (0.1%); 0 WAL file(s) added, 0 removed, 0 recycled; write=1.130 s, sync=0.003 s, total=1.151 s; sync files=10, longest=0.002 s, average=0.001 s; distance=62 kB, estimate=1137 kB
+2026-10-22 23:33:35.973 GMT [16960] LOG:  checkpoint starting: time
+2026-10-22 23:33:40.717 GMT [16960] LOG:  checkpoint complete: wrote 45 buffers (0.3%); 0 WAL file(s) added, 0 removed, 0 recycled; write=4.707 s, sync=0.005 s, total=4.746 s; sync files=28, longest=0.001 s, average=0.001 s; distance=99 kB, estimate=1033 kB
+2026-10-22 23:38:35.729 GMT [16960] LOG:  checkpoint starting: time
+2026-10-22 23:38:37.146 GMT [16960] LOG:  checkpoint complete: wrote 14 buffers (0.1%); 0 WAL file(s) added, 0 removed, 0 recycled; write=1.398 s, sync=0.003 s, total=1.422 s; sync files=13, longest=0.001 s, average=0.001 s; distance=55 kB, estimate=935 kB
+2026-10-22 23:43:35.170 GMT [16960] LOG:  checkpoint starting: time
+2026-10-22 23:43:36.364 GMT [16960] LOG:  checkpoint complete: wrote 12 buffers (0.1%); 0 WAL file(s) added, 0 removed, 0 recycled; write=1.147 s, sync=0.004 s, total=1.194 s; sync files=10, longest=0.002 s, average=0.001 s; distance=57 kB, estimate=847 kB
+2026-10-22 23:48:35.371 GMT [16960] LOG:  checkpoint starting: time
+2026-10-22 23:48:39.357 GMT [16960] LOG:  checkpoint complete: wrote 40 buffers (0.2%); 0 WAL file(s) added, 0 removed, 0 recycled; write=3.965 s, sync=0.005 s, total=3.988 s; sync files=16, longest=0.002 s, average=0.001 s; distance=174 kB, estimate=780 kB
+2026-10-22 23:53:35.364 GMT [16960] LOG:  checkpoint starting: time
+2026-10-22 23:53:36.425 GMT [16960] LOG:  checkpoint complete: wrote 11 buffers (0.1%); 0 WAL file(s) added, 0 removed, 0 recycled; write=1.037 s, sync=0.003 s, total=1.068 s; sync files=9, longest=0.002 s, average=0.001 s; distance=72 kB, estimate=709 kB
+2026-10-22 23:58:35.437 GMT [16960] LOG:  checkpoint starting: time
+2026-10-22 23:58:37.545 GMT [16960] LOG:  checkpoint complete: wrote 20 buffers (0.1%); 0 WAL file(s) added, 0 removed, 0 recycled; write=2.072 s, sync=0.003 s, total=2.115 s; sync files=11, longest=0.002 s, average=0.001 s; distance=96 kB, estimate=648 kB
+2026-10-23 00:03:35.560 GMT [16960] LOG:  checkpoint starting: time
+2026-10-23 00:03:36.446 GMT [16960] LOG:  checkpoint complete: wrote 9 buffers (0.1%); 0 WAL file(s) added, 0 removed, 0 recycled; write=0.855 s, sync=0.011 s, total=0.897 s; sync files=9, longest=0.004 s, average=0.002 s; distance=45 kB, estimate=588 kB
+2026-10-23 00:23:35.497 GMT [16960] LOG:  checkpoint starting: time
+2026-10-23 00:23:36.865 GMT [16960] LOG:  checkpoint complete: wrote 14 buffers (0.1%); 0 WAL file(s) added, 0 removed, 0 recycled; write=1.355 s, sync=0.003 s, total=1.373 s; sync files=9, longest=0.002 s, average=0.001 s; distance=61 kB, estimate=535 kB
+2026-10-23 00:28:35.879 GMT [16960] LOG:  checkpoint starting: time
+2026-10-23 00:28:36.452 GMT [16960] LOG:  checkpoint complete: wrote 6 buffers (0.0%); 0 WAL file(s) added, 0 removed, 0 recycled; write=0.534 s, sync=0.010 s, total=0.574 s; sync files=4, longest=0.009 s, average=0.003 s; distance=1 kB, estimate=482 kB
+2026-10-23 00:48:35.677 GMT [16960] LOG:  checkpoint starting: time
+2026-10-23 00:48:37.255 GMT [16960] LOG:  checkpoint complete: wrote 14 buffers (0.1%); 0 WAL file(s) added, 0 removed, 0 recycled; write=1.386 s, sync=0.005 s, total=1.580 s; sync files=9, longest=0.002 s, average=0.001 s; distance=58 kB, estimate=439 kB
+2026-10-23 00:58:35.311 GMT [16960] LOG:  checkpoint starting: time
+2026-10-23 00:58:38.209 GMT [16960] LOG:  checkpoint complete: wrote 28 buffers (0.2%); 0 WAL file(s) added, 0 removed, 0 recycled; write=2.788 s, sync=0.002 s, total=2.903 s; sync files=15, longest=0.001 s, average=0.001 s; distance=102 kB, estimate=406 kB
+2026-10-23 07:20:23.534 GMT [16959] LOG:  received smart shutdown request
+2026-10-23 07:20:23.539 GMT [16959] LOG:  background worker "logical replication launcher" (PID 16965) exited with exit code 1
+2026-10-23 07:20:23.539 GMT [16960] LOG:  shutting down
+2026-10-23 07:20:23.542 GMT [16960] LOG:  checkpoint starting: shutdown immediate
+2026-10-23 07:20:23.554 GMT [16960] LOG:  checkpoint complete: wrote 0 buffers (0.0%); 0 WAL file(s) added, 0 removed, 0 recycled; write=0.004 s, sync=0.001 s, total=0.015 s; sync files=0, longest=0.000 s, average=0.000 s; distance=0 kB, estimate=365 kB
+2026-10-23 07:20:23.575 GMT [16959] LOG:  database system is shut down
+2026-10-24 03:55:07.809 GMT [8892] LOG:  starting PostgreSQL 15.15 (Homebrew) on x86_64-apple-darwin21.6.0, compiled by Apple clang version 14.0.0 (clang-1400.0.29.202), 64-bit
+2026-10-24 03:55:07.817 GMT [8892] LOG:  listening on IPv6 address "::1", port 5433
+2026-10-24 03:55:07.817 GMT [8892] LOG:  listening on IPv4 address "127.0.0.1", port 5433
+2026-10-24 03:55:07.820 GMT [8892] LOG:  listening on Unix socket "/tmp/.s.PGSQL.5433"
+2026-10-24 03:55:07.935 GMT [8895] LOG:  database system was shut down at 2026-10-23 07:20:23 GMT
+2026-10-24 03:55:07.995 GMT [8892] LOG:  database system is ready to accept connections
+2026-10-24 03:55:10.235 GMT [8903] FATAL:  role "user" does not exist
+2026-10-24 03:55:12.692 GMT [8907] LOG:  invalid length of startup packet
+2026-10-24 04:00:07.955 GMT [8893] LOG:  checkpoint starting: time
+2026-10-24 04:00:08.937 GMT [8893] LOG:  checkpoint complete: wrote 5 buffers (0.0%); 0 WAL file(s) added, 0 removed, 0 recycled; write=0.953 s, sync=0.004 s, total=0.995 s; sync files=4, longest=0.004 s, average=0.001 s; distance=6 kB, estimate=6 kB
+2026-10-24 04:05:07.964 GMT [8893] LOG:  checkpoint starting: time
+2026-10-24 04:05:10.001 GMT [8893] LOG:  checkpoint complete: wrote 19 buffers (0.1%); 0 WAL file(s) added, 0 removed, 0 recycled; write=1.956 s, sync=0.004 s, total=2.048 s; sync files=13, longest=0.002 s, average=0.001 s; distance=75 kB, estimate=75 kB
+2026-10-24 04:10:07.032 GMT [8893] LOG:  checkpoint starting: time
+2026-10-24 04:10:08.938 GMT [8893] LOG:  checkpoint complete: wrote 18 buffers (0.1%); 0 WAL file(s) added, 0 removed, 0 recycled; write=1.869 s, sync=0.010 s, total=1.922 s; sync files=11, longest=0.004 s, average=0.001 s; distance=102 kB, estimate=102 kB
+2026-10-24 04:15:07.945 GMT [8893] LOG:  checkpoint starting: time
+2026-10-24 04:15:09.922 GMT [8893] LOG:  checkpoint complete: wrote 18 buffers (0.1%); 0 WAL file(s) added, 0 removed, 0 recycled; write=1.877 s, sync=0.036 s, total=1.979 s; sync files=9, longest=0.016 s, average=0.004 s; distance=92 kB, estimate=101 kB
+2026-10-24 04:16:11.489 GMT [10281] LOG:  could not receive data from client: Connection reset by peer
+2026-10-24 04:20:07.927 GMT [8893] LOG:  checkpoint starting: time
+2026-10-24 04:20:09.504 GMT [8893] LOG:  checkpoint complete: wrote 15 buffers (0.1%); 0 WAL file(s) added, 0 removed, 0 recycled; write=1.544 s, sync=0.003 s, total=1.581 s; sync files=11, longest=0.001 s, average=0.001 s; distance=64 kB, estimate=97 kB
+2026-10-24 04:25:07.523 GMT [8893] LOG:  checkpoint starting: time
+2026-10-24 04:25:09.359 GMT [8893] LOG:  checkpoint complete: wrote 17 buffers (0.1%); 0 WAL file(s) added, 0 removed, 0 recycled; write=1.782 s, sync=0.015 s, total=1.838 s; sync files=9, longest=0.009 s, average=0.002 s; distance=73 kB, estimate=95 kB
+2026-10-24 04:30:07.364 GMT [8893] LOG:  checkpoint starting: time
+2026-10-24 04:30:08.936 GMT [8893] LOG:  checkpoint complete: wrote 14 buffers (0.1%); 0 WAL file(s) added, 0 removed, 0 recycled; write=1.509 s, sync=0.011 s, total=1.575 s; sync files=9, longest=0.004 s, average=0.002 s; distance=69 kB, estimate=92 kB
+2026-10-24 04:35:07.953 GMT [8893] LOG:  checkpoint starting: time
+2026-10-24 04:35:09.765 GMT [8893] LOG:  checkpoint complete: wrote 18 buffers (0.1%); 0 WAL file(s) added, 0 removed, 0 recycled; write=1.743 s, sync=0.002 s, total=1.816 s; sync files=10, longest=0.001 s, average=0.001 s; distance=93 kB, estimate=93 kB
+2026-10-24 04:40:07.778 GMT [8893] LOG:  checkpoint starting: time
+2026-10-24 04:40:15.325 GMT [8893] LOG:  checkpoint complete: wrote 73 buffers (0.4%); 0 WAL file(s) added, 0 removed, 0 recycled; write=7.517 s, sync=0.016 s, total=7.549 s; sync files=45, longest=0.004 s, average=0.001 s; distance=165 kB, estimate=165 kB
+2026-10-24 04:45:07.355 GMT [8893] LOG:  checkpoint starting: time
+2026-10-24 04:45:09.989 GMT [8893] LOG:  checkpoint complete: wrote 25 buffers (0.2%); 0 WAL file(s) added, 0 removed, 0 recycled; write=2.526 s, sync=0.007 s, total=2.653 s; sync files=11, longest=0.002 s, average=0.001 s; distance=113 kB, estimate=160 kB
+2026-10-24 04:50:07.993 GMT [8893] LOG:  checkpoint starting: time
+2026-10-24 04:50:09.964 GMT [8893] LOG:  checkpoint complete: wrote 19 buffers (0.1%); 0 WAL file(s) added, 0 removed, 0 recycled; write=1.920 s, sync=0.002 s, total=1.973 s; sync files=11, longest=0.001 s, average=0.001 s; distance=103 kB, estimate=154 kB
+2026-10-24 04:55:07.976 GMT [8893] LOG:  checkpoint starting: time
+2026-10-24 04:55:09.929 GMT [8893] LOG:  checkpoint complete: wrote 16 buffers (0.1%); 0 WAL file(s) added, 0 removed, 0 recycled; write=1.855 s, sync=0.032 s, total=1.960 s; sync files=9, longest=0.010 s, average=0.004 s; distance=90 kB, estimate=148 kB
+2026-10-24 05:00:07.943 GMT [8893] LOG:  checkpoint starting: time
+2026-10-24 05:00:09.162 GMT [8893] LOG:  checkpoint complete: wrote 12 buffers (0.1%); 0 WAL file(s) added, 0 removed, 0 recycled; write=1.181 s, sync=0.011 s, total=1.232 s; sync files=9, longest=0.004 s, average=0.002 s; distance=68 kB, estimate=140 kB
+2026-10-24 05:05:07.182 GMT [8893] LOG:  checkpoint starting: time
+2026-10-24 05:05:10.874 GMT [8893] LOG:  checkpoint complete: wrote 35 buffers (0.2%); 0 WAL file(s) added, 0 removed, 0 recycled; write=3.643 s, sync=0.024 s, total=3.701 s; sync files=14, longest=0.011 s, average=0.002 s; distance=190 kB, estimate=190 kB
+2026-10-24 05:10:07.894 GMT [8893] LOG:  checkpoint starting: time
+2026-10-24 05:10:09.991 GMT [8893] LOG:  checkpoint complete: wrote 20 buffers (0.1%); 0 WAL file(s) added, 0 removed, 0 recycled; write=2.051 s, sync=0.016 s, total=2.099 s; sync files=10, longest=0.006 s, average=0.002 s; distance=96 kB, estimate=181 kB
+2026-10-24 05:15:07.998 GMT [8893] LOG:  checkpoint starting: time
+2026-10-24 05:15:10.364 GMT [8893] LOG:  checkpoint complete: wrote 24 buffers (0.1%); 0 WAL file(s) added, 0 removed, 0 recycled; write=2.346 s, sync=0.005 s, total=2.372 s; sync files=9, longest=0.002 s, average=0.001 s; distance=86 kB, estimate=171 kB
+2026-10-24 05:20:07.369 GMT [8893] LOG:  checkpoint starting: time
+2026-10-24 05:20:09.727 GMT [8893] LOG:  checkpoint complete: wrote 23 buffers (0.1%); 0 WAL file(s) added, 0 removed, 0 recycled; write=2.334 s, sync=0.007 s, total=2.360 s; sync files=15, longest=0.003 s, average=0.001 s; distance=90 kB, estimate=163 kB
+2026-10-24 05:25:07.740 GMT [8893] LOG:  checkpoint starting: time
+2026-10-24 05:25:08.632 GMT [8893] LOG:  checkpoint complete: wrote 9 buffers (0.1%); 0 WAL file(s) added, 0 removed, 0 recycled; write=0.856 s, sync=0.002 s, total=0.898 s; sync files=9, longest=0.001 s, average=0.001 s; distance=44 kB, estimate=151 kB
+2026-10-24 05:35:07.654 GMT [8893] LOG:  checkpoint starting: time
+2026-10-24 05:35:09.036 GMT [8893] LOG:  checkpoint complete: wrote 14 buffers (0.1%); 0 WAL file(s) added, 0 removed, 0 recycled; write=1.346 s, sync=0.006 s, total=1.395 s; sync files=9, longest=0.004 s, average=0.001 s; distance=62 kB, estimate=142 kB
+2026-10-24 05:39:54.699 GMT [16533] LOG:  could not receive data from client: Connection reset by peer
+2026-10-24 05:40:07.040 GMT [8893] LOG:  checkpoint starting: time
+2026-10-24 05:40:09.190 GMT [8893] LOG:  checkpoint complete: wrote 22 buffers (0.1%); 0 WAL file(s) added, 0 removed, 0 recycled; write=2.133 s, sync=0.002 s, total=2.151 s; sync files=10, longest=0.001 s, average=0.001 s; distance=96 kB, estimate=138 kB
+2026-10-24 05:45:07.192 GMT [8893] LOG:  checkpoint starting: time
+2026-10-24 05:45:09.451 GMT [8893] LOG:  checkpoint complete: wrote 23 buffers (0.1%); 0 WAL file(s) added, 0 removed, 0 recycled; write=2.232 s, sync=0.003 s, total=2.260 s; sync files=9, longest=0.001 s, average=0.001 s; distance=86 kB, estimate=132 kB
+2026-10-24 05:50:07.454 GMT [8893] LOG:  checkpoint starting: time
+2026-10-24 05:50:10.032 GMT [8893] LOG:  checkpoint complete: wrote 26 buffers (0.2%); 0 WAL file(s) added, 0 removed, 0 recycled; write=2.561 s, sync=0.003 s, total=2.579 s; sync files=9, longest=0.002 s, average=0.001 s; distance=104 kB, estimate=129 kB
+2026-10-24 05:55:07.037 GMT [8893] LOG:  checkpoint starting: time
+2026-10-24 05:55:09.305 GMT [8893] LOG:  checkpoint complete: wrote 23 buffers (0.1%); 0 WAL file(s) added, 0 removed, 0 recycled; write=2.242 s, sync=0.004 s, total=2.269 s; sync files=9, longest=0.002 s, average=0.001 s; distance=84 kB, estimate=125 kB
+2026-10-24 06:00:07.309 GMT [8893] LOG:  checkpoint starting: time
+2026-10-24 06:00:09.675 GMT [8893] LOG:  checkpoint complete: wrote 24 buffers (0.1%); 0 WAL file(s) added, 0 removed, 0 recycled; write=2.353 s, sync=0.003 s, total=2.368 s; sync files=9, longest=0.002 s, average=0.001 s; distance=89 kB, estimate=121 kB
+2026-10-24 06:05:07.682 GMT [8893] LOG:  checkpoint starting: time
+2026-10-24 06:05:09.845 GMT [8893] LOG:  checkpoint complete: wrote 22 buffers (0.1%); 0 WAL file(s) added, 0 removed, 0 recycled; write=2.141 s, sync=0.005 s, total=2.167 s; sync files=9, longest=0.003 s, average=0.001 s; distance=84 kB, estimate=118 kB
+2026-10-24 06:10:07.852 GMT [8893] LOG:  checkpoint starting: time
+2026-10-24 06:10:13.192 GMT [8893] LOG:  checkpoint complete: wrote 53 buffers (0.3%); 0 WAL file(s) added, 0 removed, 0 recycled; write=5.313 s, sync=0.008 s, total=5.345 s; sync files=14, longest=0.005 s, average=0.001 s; distance=167 kB, estimate=167 kB
+2026-10-24 06:15:07.201 GMT [8893] LOG:  checkpoint starting: time
+2026-10-24 06:15:09.790 GMT [8893] LOG:  checkpoint complete: wrote 26 buffers (0.2%); 0 WAL file(s) added, 0 removed, 0 recycled; write=2.558 s, sync=0.004 s, total=2.596 s; sync files=9, longest=0.002 s, average=0.001 s; distance=87 kB, estimate=159 kB
+2026-10-24 06:20:07.792 GMT [8893] LOG:  checkpoint starting: time
+2026-10-24 06:20:10.366 GMT [8893] LOG:  checkpoint complete: wrote 26 buffers (0.2%); 0 WAL file(s) added, 0 removed, 1 recycled; write=2.560 s, sync=0.004 s, total=2.575 s; sync files=9, longest=0.002 s, average=0.001 s; distance=93 kB, estimate=152 kB
+2026-10-24 06:25:07.369 GMT [8893] LOG:  checkpoint starting: time
+2026-10-24 06:25:09.642 GMT [8893] LOG:  checkpoint complete: wrote 23 buffers (0.1%); 0 WAL file(s) added, 0 removed, 0 recycled; write=2.254 s, sync=0.004 s, total=2.274 s; sync files=9, longest=0.003 s, average=0.001 s; distance=92 kB, estimate=146 kB
+2026-10-24 06:30:07.645 GMT [8893] LOG:  checkpoint starting: time
+2026-10-24 06:30:10.400 GMT [8893] LOG:  checkpoint complete: wrote 28 buffers (0.2%); 0 WAL file(s) added, 0 removed, 0 recycled; write=2.747 s, sync=0.002 s, total=2.756 s; sync files=9, longest=0.001 s, average=0.001 s; distance=98 kB, estimate=142 kB
+2026-10-24 06:35:07.403 GMT [8893] LOG:  checkpoint starting: time
+2026-10-24 06:35:09.984 GMT [8893] LOG:  checkpoint complete: wrote 26 buffers (0.2%); 0 WAL file(s) added, 0 removed, 0 recycled; write=2.557 s, sync=0.004 s, total=2.582 s; sync files=10, longest=0.002 s, average=0.001 s; distance=101 kB, estimate=138 kB
+2026-10-24 06:40:07.989 GMT [8893] LOG:  checkpoint starting: time
+2026-10-24 06:40:10.043 GMT [8893] LOG:  checkpoint complete: wrote 21 buffers (0.1%); 0 WAL file(s) added, 0 removed, 0 recycled; write=2.043 s, sync=0.004 s, total=2.055 s; sync files=9, longest=0.002 s, average=0.001 s; distance=86 kB, estimate=132 kB
+2026-10-24 06:45:07.046 GMT [8893] LOG:  checkpoint starting: time
+2026-10-24 06:45:09.425 GMT [8893] LOG:  checkpoint complete: wrote 24 buffers (0.1%); 0 WAL file(s) added, 0 removed, 0 recycled; write=2.348 s, sync=0.004 s, total=2.380 s; sync files=9, longest=0.003 s, average=0.001 s; distance=97 kB, estimate=129 kB
+2026-10-24 06:50:07.428 GMT [8893] LOG:  checkpoint starting: time
+2026-10-24 06:50:09.801 GMT [8893] LOG:  checkpoint complete: wrote 24 buffers (0.1%); 0 WAL file(s) added, 0 removed, 0 recycled; write=2.355 s, sync=0.004 s, total=2.375 s; sync files=9, longest=0.003 s, average=0.001 s; distance=95 kB, estimate=125 kB
+2026-10-24 06:55:07.802 GMT [8893] LOG:  checkpoint starting: time
+2026-10-24 06:55:10.362 GMT [8893] LOG:  checkpoint complete: wrote 26 buffers (0.2%); 0 WAL file(s) added, 0 removed, 0 recycled; write=2.547 s, sync=0.002 s, total=2.560 s; sync files=9, longest=0.001 s, average=0.001 s; distance=102 kB, estimate=123 kB
+2026-10-24 07:00:07.366 GMT [8893] LOG:  checkpoint starting: time
+2026-10-24 07:00:10.028 GMT [8893] LOG:  checkpoint complete: wrote 27 buffers (0.2%); 0 WAL file(s) added, 0 removed, 0 recycled; write=2.649 s, sync=0.004 s, total=2.663 s; sync files=10, longest=0.003 s, average=0.001 s; distance=123 kB, estimate=123 kB
+2026-10-24 07:05:07.029 GMT [8893] LOG:  checkpoint starting: time
+2026-10-24 07:05:11.929 GMT [8893] LOG:  checkpoint complete: wrote 49 buffers (0.3%); 0 WAL file(s) added, 0 removed, 0 recycled; write=4.888 s, sync=0.006 s, total=4.901 s; sync files=14, longest=0.003 s, average=0.001 s; distance=165 kB, estimate=165 kB
+2026-10-24 07:10:07.933 GMT [8893] LOG:  checkpoint starting: time
+2026-10-24 07:10:10.499 GMT [8893] LOG:  checkpoint complete: wrote 26 buffers (0.2%); 0 WAL file(s) added, 0 removed, 0 recycled; write=2.556 s, sync=0.004 s, total=2.567 s; sync files=9, longest=0.002 s, average=0.001 s; distance=93 kB, estimate=158 kB
+2026-10-24 07:15:07.500 GMT [8893] LOG:  checkpoint starting: time
+2026-10-24 07:15:09.963 GMT [8893] LOG:  checkpoint complete: wrote 25 buffers (0.2%); 0 WAL file(s) added, 0 removed, 0 recycled; write=2.451 s, sync=0.004 s, total=2.464 s; sync files=9, longest=0.003 s, average=0.001 s; distance=100 kB, estimate=152 kB
+2026-10-24 07:20:07.967 GMT [8893] LOG:  checkpoint starting: time
+2026-10-24 07:20:10.318 GMT [8893] LOG:  checkpoint complete: wrote 24 buffers (0.1%); 0 WAL file(s) added, 0 removed, 0 recycled; write=2.342 s, sync=0.002 s, total=2.352 s; sync files=9, longest=0.001 s, average=0.001 s; distance=100 kB, estimate=147 kB
+2026-10-24 07:25:07.320 GMT [8893] LOG:  checkpoint starting: time
+2026-10-24 07:25:10.100 GMT [8893] LOG:  checkpoint complete: wrote 28 buffers (0.2%); 0 WAL file(s) added, 0 removed, 0 recycled; write=2.766 s, sync=0.004 s, total=2.780 s; sync files=10, longest=0.002 s, average=0.001 s; distance=121 kB, estimate=144 kB
+2026-10-24 07:30:07.113 GMT [8893] LOG:  checkpoint starting: time
+2026-10-24 07:30:09.281 GMT [8893] LOG:  checkpoint complete: wrote 22 buffers (0.1%); 0 WAL file(s) added, 0 removed, 0 recycled; write=2.149 s, sync=0.003 s, total=2.176 s; sync files=9, longest=0.002 s, average=0.001 s; distance=95 kB, estimate=140 kB
+2026-10-24 07:35:07.286 GMT [8893] LOG:  checkpoint starting: time
+2026-10-24 07:35:09.580 GMT [8893] LOG:  checkpoint complete: wrote 23 buffers (0.1%); 0 WAL file(s) added, 0 removed, 0 recycled; write=2.243 s, sync=0.004 s, total=2.299 s; sync files=9, longest=0.003 s, average=0.001 s; distance=106 kB, estimate=136 kB
+2026-10-24 07:40:07.587 GMT [8893] LOG:  checkpoint starting: time
+2026-10-24 07:40:09.960 GMT [8893] LOG:  checkpoint complete: wrote 24 buffers (0.1%); 0 WAL file(s) added, 0 removed, 0 recycled; write=2.352 s, sync=0.010 s, total=2.377 s; sync files=9, longest=0.005 s, average=0.002 s; distance=111 kB, estimate=134 kB
+2026-10-24 07:45:07.969 GMT [8893] LOG:  checkpoint starting: time
+2026-10-24 07:45:10.756 GMT [8893] LOG:  checkpoint complete: wrote 28 buffers (0.2%); 0 WAL file(s) added, 0 removed, 0 recycled; write=2.762 s, sync=0.004 s, total=2.792 s; sync files=9, longest=0.002 s, average=0.001 s; distance=123 kB, estimate=133 kB
+2026-10-24 07:50:07.758 GMT [8893] LOG:  checkpoint starting: time
+2026-10-24 07:50:10.334 GMT [8893] LOG:  checkpoint complete: wrote 26 buffers (0.2%); 0 WAL file(s) added, 0 removed, 0 recycled; write=2.555 s, sync=0.005 s, total=2.576 s; sync files=9, longest=0.003 s, average=0.001 s; distance=119 kB, estimate=131 kB
+2026-10-24 07:55:07.340 GMT [8893] LOG:  checkpoint starting: time
+2026-10-24 07:55:10.836 GMT [8893] LOG:  checkpoint complete: wrote 35 buffers (0.2%); 0 WAL file(s) added, 0 removed, 0 recycled; write=3.474 s, sync=0.004 s, total=3.501 s; sync files=10, longest=0.003 s, average=0.001 s; distance=155 kB, estimate=155 kB
+2026-10-24 08:00:07.839 GMT [8893] LOG:  checkpoint starting: time
+2026-10-24 08:00:10.017 GMT [8893] LOG:  checkpoint complete: wrote 22 buffers (0.1%); 0 WAL file(s) added, 0 removed, 0 recycled; write=2.146 s, sync=0.013 s, total=2.179 s; sync files=9, longest=0.005 s, average=0.002 s; distance=107 kB, estimate=150 kB
+2026-10-24 08:05:07.067 GMT [8893] LOG:  checkpoint starting: time
+2026-10-24 08:05:09.675 GMT [8893] LOG:  checkpoint complete: wrote 26 buffers (0.2%); 0 WAL file(s) added, 0 removed, 0 recycled; write=2.587 s, sync=0.004 s, total=2.619 s; sync files=9, longest=0.002 s, average=0.001 s; distance=132 kB, estimate=148 kB
+2026-10-24 08:10:07.690 GMT [8893] LOG:  checkpoint starting: time
+2026-10-24 08:10:12.764 GMT [8893] LOG:  checkpoint complete: wrote 50 buffers (0.3%); 0 WAL file(s) added, 0 removed, 0 recycled; write=5.044 s, sync=0.011 s, total=5.079 s; sync files=15, longest=0.007 s, average=0.001 s; distance=198 kB, estimate=198 kB
+2026-10-24 08:16:52.400 GMT [8893] LOG:  checkpoint starting: time
+2026-10-24 08:16:55.606 GMT [8893] LOG:  checkpoint complete: wrote 31 buffers (0.2%); 0 WAL file(s) added, 0 removed, 0 recycled; write=3.186 s, sync=0.002 s, total=3.210 s; sync files=10, longest=0.001 s, average=0.001 s; distance=159 kB, estimate=194 kB
+2026-10-24 08:26:23.850 GMT [8893] LOG:  checkpoint starting: time
+2026-10-24 08:26:25.610 GMT [8893] LOG:  checkpoint complete: wrote 18 buffers (0.1%); 0 WAL file(s) added, 0 removed, 0 recycled; write=1.745 s, sync=0.002 s, total=1.771 s; sync files=9, longest=0.001 s, average=0.001 s; distance=88 kB, estimate=184 kB
+2026-10-24 10:02:07.954 GMT [8893] LOG:  checkpoint starting: time
+2026-10-24 10:02:10.269 GMT [8893] LOG:  checkpoint complete: wrote 23 buffers (0.1%); 0 WAL file(s) added, 0 removed, 0 recycled; write=2.242 s, sync=0.008 s, total=2.321 s; sync files=9, longest=0.004 s, average=0.001 s; distance=114 kB, estimate=177 kB
+2026-10-24 10:12:07.294 GMT [8893] LOG:  checkpoint starting: time
+2026-10-24 10:12:08.259 GMT [8893] LOG:  checkpoint complete: wrote 9 buffers (0.1%); 0 WAL file(s) added, 0 removed, 0 recycled; write=0.906 s, sync=0.016 s, total=0.973 s; sync files=9, longest=0.011 s, average=0.002 s; distance=43 kB, estimate=164 kB
+2026-10-24 10:22:07.282 GMT [8893] LOG:  checkpoint starting: time
+2026-10-24 10:22:08.371 GMT [8893] LOG:  checkpoint complete: wrote 9 buffers (0.1%); 0 WAL file(s) added, 0 removed, 0 recycled; write=1.007 s, sync=0.015 s, total=1.100 s; sync files=9, longest=0.006 s, average=0.002 s; distance=45 kB, estimate=152 kB

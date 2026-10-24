@@ -1,0 +1,1109 @@
+
+> ulmc-cms@1.0.0 dev
+> next dev -p 3000
+
+   ▲ Next.js 15.5.28
+   - Local:        http://localhost:3000
+   - Network:      http://10.33.240.218:3000
+   - Environments: .env
+   - Experiments (use with caution):
+     · serverActions
+
+ ✓ Starting...
+ ✓ Ready in 10.4s
+ ○ Compiling /api/health ...
+ ✓ Compiled /api/health in 4.1s (419 modules)
+ GET /api/health 200 in 5074ms
+ ○ Compiling / ...
+[Error: Cannot apply unknown utility class `card`]
+ ⨯ ./src/app/globals.css:1:1
+Syntax error: tailwindcss: /Users/user/Desktop/websites/ULMC/src/app/globals.css Cannot apply unknown utility class `card`
+
+> 1 | @import "tailwindcss";
+    | ^
+  2 | 
+  3 | @theme {
+<w> [webpack.cache.PackFileCacheStrategy] Skipped not serializable cache item 'Compilation/modules|/Users/user/Desktop/websites/ULMC/node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[14].oneOf[10].use[2]!/Users/user/Desktop/websites/ULMC/node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[14].oneOf[10].use[3]!/Users/user/Desktop/websites/ULMC/src/app/globals.css': No serializer registered for PostCSSSyntaxError
+<w> while serializing webpack/lib/cache/PackFileCacheStrategy.PackContentItems -> webpack/lib/NormalModule -> webpack/lib/ModuleBuildError -> PostCSSSyntaxError
+[Error: Cannot apply unknown utility class `card`]
+ ⨯ ./src/app/globals.css:1:1
+Syntax error: tailwindcss: /Users/user/Desktop/websites/ULMC/src/app/globals.css Cannot apply unknown utility class `card`
+
+> 1 | @import "tailwindcss";
+    | ^
+  2 | 
+  3 | @theme {
+ GET / 500 in 44212ms
+ GET / 500 in 971ms
+ ✓ Compiled /middleware in 3.3s (115 modules)
+ ○ Compiling /studio ...
+<w> [webpack.cache.PackFileCacheStrategy] Skipped not serializable cache item 'Compilation/modules|/Users/user/Desktop/websites/ULMC/node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[14].oneOf[10].use[2]!/Users/user/Desktop/websites/ULMC/node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[14].oneOf[10].use[3]!/Users/user/Desktop/websites/ULMC/src/app/globals.css': No serializer registered for PostCSSSyntaxError
+<w> while serializing webpack/lib/cache/PackFileCacheStrategy.PackContentItems -> webpack/lib/NormalModule -> webpack/lib/ModuleBuildError -> PostCSSSyntaxError
+[Error: Cannot apply unknown utility class `card`]
+[Error: Cannot apply unknown utility class `card`]
+[Error: Cannot apply unknown utility class `card`]
+ ⨯ ./src/app/globals.css:1:1
+Syntax error: tailwindcss: /Users/user/Desktop/websites/ULMC/src/app/globals.css Cannot apply unknown utility class `card`
+
+> 1 | @import "tailwindcss";
+    | ^
+  2 | 
+  3 | @theme {
+ GET /setup 500 in 11266ms
+ GET / 500 in 99210ms
+ GET /api/health 500 in 328ms
+ GET / 500 in 205ms
+ ✓ Compiled /[...slug] in 31.7s (2321 modules)
+ ✓ Compiled in 3.1s (525 modules)
+ GET /favicon.ico 200 in 39202ms
+ ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+ GET / 200 in 22040ms
+ GET /_next/static/webpack/dda82d3feea5dc1f.webpack.hot-update.json 200 in 19863ms
+ GET /_next/static/webpack/dda82d3feea5dc1f.webpack.hot-update.json 200 in 21719ms
+ ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+ GET /api/health 200 in 9704ms
+ GET /studio/login 200 in 3197ms
+ GET / 200 in 29246ms
+ GET / 200 in 25878ms
+ GET /setup 200 in 9628ms
+ ✓ Compiled in 5.4s (539 modules)
+ ✓ Compiled in 5.8s (539 modules)
+ ○ Compiling /api/analytics/collect ...
+ ✓ Compiled /api/analytics/collect in 20s (2256 modules)
+ POST /api/analytics/collect 200 in 26898ms
+ POST /api/analytics/collect 200 in 29796ms
+ POST /api/analytics/collect 200 in 436ms
+ ✓ Compiled in 1861ms (539 modules)
+ POST /api/analytics/collect 200 in 17516ms
+ GET / 200 in 40976ms
+ GET / 200 in 40639ms
+ POST /api/analytics/collect 200 in 426ms
+ POST /api/analytics/collect 200 in 163ms
+ ✓ Compiled in 7.7s (539 modules)
+ POST /api/analytics/collect 200 in 1543ms
+ GET / 200 in 5643ms
+ GET / 200 in 6878ms
+ ✓ Compiled in 3.1s (539 modules)
+ POST /api/analytics/collect 200 in 3576ms
+ GET / 200 in 6060ms
+ GET / 200 in 3831ms
+ ✓ Compiled in 3.4s (539 modules)
+ GET / 200 in 894ms
+ POST /api/analytics/collect 200 in 333ms
+ POST /api/analytics/collect 200 in 417ms
+ GET / 200 in 446ms
+ POST /api/analytics/collect 200 in 120ms
+ ✓ Compiled in 1230ms (539 modules)
+ GET / 200 in 660ms
+ GET / 200 in 679ms
+ POST /api/analytics/collect 200 in 76ms
+ POST /api/analytics/collect 200 in 156ms
+ ✓ Compiled in 4.7s (539 modules)
+ ⨯ SyntaxError: Unexpected end of JSON input
+    at JSON.parse (<anonymous>) {
+  page: '/'
+}
+ ⨯ SyntaxError: Unexpected end of JSON input
+    at JSON.parse (<anonymous>) {
+  page: '/'
+}
+ ✓ Compiled in 14.9s (1351 modules)
+ GET / 500 in 18968ms
+ GET / 500 in 18934ms
+ POST /api/analytics/collect 200 in 7088ms
+ POST /api/analytics/collect 200 in 3023ms
+ POST /api/analytics/collect 200 in 334ms
+ GET / 200 in 12982ms
+ GET / 200 in 13534ms
+ POST /api/analytics/collect 200 in 5810ms
+ POST /api/analytics/collect 200 in 796ms
+ GET / 200 in 21595ms
+ GET / 200 in 10707ms
+ POST /api/analytics/collect 200 in 372ms
+ POST /api/analytics/collect 200 in 666ms
+ POST /api/analytics/collect 200 in 803ms
+ ✓ Compiled in 5.4s (539 modules)
+ GET / 200 in 886ms
+ GET / 200 in 1065ms
+ POST /api/analytics/collect 200 in 389ms
+ POST /api/analytics/collect 200 in 123ms
+ ✓ Compiled in 5.7s (539 modules)
+ POST /api/analytics/collect 200 in 1035ms
+ GET / 200 in 4585ms
+ GET / 200 in 4669ms
+ POST /api/analytics/collect 200 in 336ms
+ POST /api/analytics/collect 200 in 626ms
+ ✓ Compiled in 11.2s (539 modules)
+ GET / 200 in 1176ms
+ ✓ Compiled in 4.3s (539 modules)
+ POST /api/analytics/collect 200 in 2943ms
+ GET / 200 in 5809ms
+ GET / 200 in 4962ms
+ GET / 200 in 1071ms
+ POST /api/analytics/collect 200 in 15221ms
+ ✓ Compiled in 24.1s (539 modules)
+ POST /api/analytics/collect 200 in 1803ms
+ GET / 200 in 7808ms
+ GET / 200 in 6196ms
+ ✓ Compiled in 7.4s (539 modules)
+ GET / 200 in 4560ms
+ POST /api/analytics/collect 200 in 598ms
+ GET / 200 in 634ms
+ ✓ Compiled in 2.3s (539 modules)
+ POST /api/analytics/collect 200 in 952ms
+ GET / 200 in 1761ms
+ GET / 200 in 1557ms
+ ✓ Compiled in 5.5s (539 modules)
+ ✓ Compiled in 5.5s (539 modules)
+ GET / 200 in 7220ms
+ GET / 200 in 5486ms
+ POST /api/analytics/collect 200 in 5784ms
+ GET / 200 in 6528ms
+ POST /api/analytics/collect 200 in 958ms
+ GET / 200 in 1730ms
+ ✓ Compiled in 7.6s (539 modules)
+ POST /api/analytics/collect 200 in 9176ms
+ GET / 200 in 9438ms
+ GET / 200 in 6938ms
+ POST /api/analytics/collect 200 in 1685ms
+ POST /api/analytics/collect 200 in 1115ms
+ ✓ Compiled in 4.1s (539 modules)
+ GET / 200 in 2437ms
+ GET / 200 in 2496ms
+ POST /api/analytics/collect 200 in 699ms
+ ✓ Compiled in 4s (539 modules)
+ GET / 200 in 2340ms
+ GET / 200 in 1767ms
+ POST /api/analytics/collect 200 in 886ms
+ ✓ Compiled in 19.3s (539 modules)
+ POST /api/analytics/collect 200 in 8239ms
+ POST /api/analytics/collect 200 in 8007ms
+ GET / 200 in 8289ms
+ GET / 200 in 670ms
+ POST /api/analytics/collect 200 in 181ms
+ ✓ Compiled in 3.2s (539 modules)
+ GET / 200 in 1447ms
+ GET / 200 in 643ms
+ POST /api/analytics/collect 200 in 411ms
+ POST /api/analytics/collect 200 in 2222ms
+ POST /api/analytics/collect 200 in 527ms
+ POST /api/analytics/collect 200 in 199ms
+ ✓ Compiled in 2.7s (539 modules)
+ ✓ Compiled in 5.3s (539 modules)
+ POST /api/analytics/collect 200 in 3257ms
+ ✓ Compiled in 4.3s (539 modules)
+ GET / 200 in 10317ms
+ GET / 200 in 10310ms
+ GET / 200 in 4840ms
+ GET / 200 in 4749ms
+ GET / 200 in 2787ms
+ GET / 200 in 2794ms
+ POST /api/analytics/collect 200 in 683ms
+ ✓ Compiled in 10.1s (539 modules)
+ ⨯ SyntaxError: Unexpected end of JSON input
+    at JSON.parse (<anonymous>) {
+  page: '/'
+}
+Unhandled API error Error: Failed query: insert into "analytics_event" ("id", "event_id", "session_id", "visitor_id", "type", "path", "article_id", "referrer", "source", "device", "country", "duration_ms", "scroll_depth", "metadata", "is_staff", "is_demo", "created_at") values (default, $1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, default) on conflict do nothing returning "id"
+params: 05bc96a7-64e6-4354-a831-f954894f326b,3b50985a-b174-48d5-9b6e-897ccb5a5eba,9ad6f5a2-b76d-4c6c-b11b-40a43da6ae29,engagement,/,,,direct,desktop,,570041,,{},false,false
+    at async POST (src/app/api/analytics/collect/route.ts:86:22)
+  84 |     }
+  85 |
+> 86 |     const inserted = await db
+     |                      ^
+  87 |       .insert(analyticsEvent)
+  88 |       .values({
+  89 |         eventId: data.eventId, {
+  query: 'insert into "analytics_event" ("id", "event_id", "session_id", "visitor_id", "type", "path", "article_id", "referrer", "source", "device", "country", "duration_ms", "scroll_depth", "metadata", "is_staff", "is_demo", "created_at") values (default, $1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, default) on conflict do nothing returning "id"',
+  params: [Array],
+  [cause]: Error: write CONNECT_TIMEOUT localhost:5433
+      at <unknown> (Error: write CONNECT_TIMEOUT localhost:5433) {
+    code: 'CONNECT_TIMEOUT',
+    errno: 'CONNECT_TIMEOUT',
+    address: 'localhost',
+    port: 5433
+  }
+}
+ POST /api/analytics/collect 500 in 24697ms
+ GET / 200 in 76941ms
+ ✓ Compiled in 82.5s (1337 modules)
+ GET / 500 in 89869ms
+ POST /api/analytics/collect 200 in 62065ms
+ POST /api/analytics/collect 200 in 22475ms
+ POST /api/analytics/collect 200 in 6586ms
+ GET / 200 in 8740ms
+ GET / 200 in 8802ms
+ POST /api/analytics/collect 200 in 3143ms
+ GET / 200 in 13731ms
+ POST /api/analytics/collect 200 in 4635ms
+ ✓ Compiled in 10.3s (539 modules)
+ POST /api/analytics/collect 200 in 5442ms
+ GET / 200 in 11027ms
+ ⨯ SyntaxError: Unexpected end of JSON input
+    at JSON.parse (<anonymous>) {
+  page: '/api/analytics/collect'
+}
+ ✓ Compiled in 106.1s (1351 modules)
+ POST /api/analytics/collect 500 in 100520ms
+ ○ Compiling /api/analytics/collect ...
+ ✓ Compiled /api/analytics/collect in 31.6s (1351 modules)
+ POST /api/analytics/collect 200 in 57295ms
+ POST /api/analytics/collect 200 in 77476ms
+ POST /api/analytics/collect 200 in 129678ms
+ POST /api/analytics/collect 200 in 41065ms
+ POST /api/analytics/collect 200 in 7111ms
+ ✓ Compiled in 7.2s (539 modules)
+ GET / 200 in 51112ms
+ GET / 200 in 5873ms
+ GET / 200 in 1240ms
+ ✓ Compiled in 32.6s (1351 modules)
+   Reload env: .env
+ POST /api/analytics/collect 200 in 22647ms
+ POST /api/analytics/collect 200 in 1439ms
+ GET / 200 in 7698ms
+ ✓ Compiled in 6.9s (1452 modules)
+ GET / 200 in 9874ms
+ ✓ Compiled in 3.5s (539 modules)
+ GET / 200 in 732ms
+ POST /api/analytics/collect 200 in 268ms
+ ✓ Compiled in 12.9s (1351 modules)
+ GET / 200 in 11733ms
+ ✓ Compiled in 35.1s (1352 modules)
+ POST /api/analytics/collect 200 in 38992ms
+ POST /api/analytics/collect 200 in 9207ms
+ GET / 200 in 18217ms
+ ✓ Compiled in 30.9s (1352 modules)
+ POST /api/analytics/collect 200 in 18533ms
+ GET / 200 in 5190ms
+ ○ Compiling /_not-found ...
+ ✓ Compiled /_not-found in 37s (1343 modules)
+ POST /api/analytics/collect 200 in 10616ms
+ POST /api/analytics/collect 404 in 41358ms
+ ✓ Compiled in 274.8s (1472 modules)
+ GET / 404 in 280380ms
+ POST /api/analytics/collect 404 in 247261ms
+ POST /api/analytics/collect 404 in 219943ms
+ POST /api/analytics/collect 200 in 140138ms
+ POST /api/analytics/collect 200 in 189526ms
+ POST /api/analytics/collect 200 in 170439ms
+ POST /api/analytics/collect 200 in 2023ms
+ POST /api/analytics/collect 200 in 2153ms
+ POST /api/analytics/collect 200 in 2393ms
+ POST /api/analytics/collect 200 in 2050ms
+ ✓ Compiled in 8.9s (543 modules)
+ POST /api/analytics/collect 200 in 4471ms
+ ✓ Compiled in 8.4s (543 modules)
+ GET / 200 in 23350ms
+ GET / 200 in 12738ms
+ GET / 200 in 28429ms
+ POST /api/analytics/collect 200 in 13907ms
+ ✓ Compiled in 15.5s (543 modules)
+ GET / 200 in 32314ms
+ GET / 200 in 2888ms
+ GET / 200 in 5850ms
+ POST /api/analytics/collect 200 in 703ms
+ ✓ Compiled in 6.8s (539 modules)
+ POST /api/analytics/collect 200 in 1184ms
+ ✓ Compiled in 22.5s (539 modules)
+ POST /api/analytics/collect 200 in 2188ms
+ GET / 200 in 5991ms
+ POST /api/analytics/collect 200 in 1405ms
+ ✓ Compiled in 5.4s (539 modules)
+ GET / 200 in 2973ms
+ POST /api/analytics/collect 200 in 177ms
+ ✓ Compiled in 4.4s (539 modules)
+ POST /api/analytics/collect 200 in 799ms
+ GET / 200 in 6542ms
+ ✓ Compiled in 3.6s (539 modules)
+ GET / 200 in 5324ms
+ POST /api/analytics/collect 200 in 2411ms
+ ✓ Compiled in 8.3s (539 modules)
+ POST /api/analytics/collect 200 in 14900ms
+ GET / 200 in 17614ms
+ GET / 200 in 8319ms
+ POST /api/analytics/collect 200 in 4902ms
+ POST /api/analytics/collect 200 in 17056ms
+ ⨯ SyntaxError: Unexpected end of JSON input
+    at JSON.parse (<anonymous>) {
+  page: '/api/analytics/collect'
+}
+ POST /api/analytics/collect 200 in 18821ms
+ ✓ Compiled in 69.2s (1352 modules)
+ POST /api/analytics/collect 500 in 65792ms
+ POST /api/analytics/collect 200 in 46700ms
+ POST /api/analytics/collect 200 in 18734ms
+ GET / 200 in 8799ms
+ POST /api/analytics/collect 200 in 690ms
+ ✓ Compiled in 11.7s (539 modules)
+ ✓ Compiled in 8.1s (539 modules)
+ GET / 200 in 9350ms
+ GET / 200 in 1672ms
+ POST /api/analytics/collect 200 in 632ms
+ POST /api/analytics/collect 200 in 125ms
+ POST /api/analytics/collect 200 in 528ms
+ GET / 200 in 1100ms
+ POST /api/analytics/collect 200 in 186ms
+ POST /api/analytics/collect 200 in 160ms
+ POST /api/analytics/collect 200 in 323ms
+ GET / 200 in 627ms
+ GET / 200 in 489ms
+ POST /api/analytics/collect 200 in 10463ms
+ ✓ Compiled in 222.8s (1352 modules)
+ GET / 200 in 83765ms
+ POST /api/analytics/collect 200 in 109572ms
+ POST /api/analytics/collect 200 in 107570ms
+ POST /api/analytics/collect 200 in 74096ms
+ POST /api/analytics/collect 200 in 181599ms
+ POST /api/analytics/collect 200 in 124748ms
+ POST /api/analytics/collect 200 in 126950ms
+ POST /api/analytics/collect 200 in 30994ms
+ POST /api/analytics/collect 200 in 73668ms
+ POST /api/analytics/collect 200 in 191569ms
+ POST /api/analytics/collect 200 in 29862ms
+ POST /api/analytics/collect 200 in 72986ms
+ POST /api/analytics/collect 200 in 73797ms
+ ○ Compiling /about ...
+ ✓ Compiled /about in 34.9s (1359 modules)
+ POST /api/analytics/collect 200 in 24999ms
+ POST /api/analytics/collect 200 in 24377ms
+ POST /api/analytics/collect 200 in 41333ms
+ POST /api/analytics/collect 200 in 41451ms
+ GET /about 200 in 48983ms
+ ○ Compiling /team ...
+ GET / 200 in 43331ms
+ GET / 200 in 43489ms
+ ✓ Compiled /team in 10.1s (1347 modules)
+ POST /api/analytics/collect 200 in 14652ms
+ POST /api/analytics/collect 200 in 12637ms
+ GET /team 200 in 17449ms
+ ○ Compiling /student-journalism ...
+ GET / 200 in 18435ms
+ GET / 200 in 18462ms
+ ✓ Compiled /student-journalism in 16.5s (1351 modules)
+ POST /api/analytics/collect 200 in 3176ms
+ GET /student-journalism 200 in 18647ms
+ ○ Compiling /contact ...
+ ✓ Compiled /contact in 13.4s (1359 modules)
+ GET /contact 200 in 21326ms
+ ○ Compiling /academics ...
+ ✓ Compiled /news/category/[slug] in 21.4s (1370 modules)
+ POST /api/analytics/collect 200 in 21657ms
+ GET /academics 200 in 26857ms
+ ○ Compiling /faculty ...
+ GET /news/category/campus 200 in 32717ms
+ GET /news/category/university 200 in 22175ms
+ ✓ Compiled /faculty in 13s (1384 modules)
+ POST /api/analytics/collect 200 in 8818ms
+ GET /faculty 200 in 18081ms
+ POST /api/analytics/collect 200 in 4069ms
+ POST /api/analytics/collect 200 in 5041ms
+ ○ Compiling /news ...
+ POST /api/analytics/collect 200 in 5863ms
+ GET /news/category/university 200 in 25354ms
+ GET / 200 in 27189ms
+ ✓ Compiled /news in 45.4s (1382 modules)
+ POST /api/analytics/collect 200 in 33529ms
+ POST /api/analytics/collect 200 in 35670ms
+ POST /api/analytics/collect 200 in 35711ms
+ POST /api/analytics/collect 200 in 14983ms
+ GET /news 200 in 61123ms
+ POST /api/analytics/collect 200 in 31076ms
+ POST /api/analytics/collect 200 in 17169ms
+ POST /api/analytics/collect 200 in 20706ms
+ POST /api/analytics/collect 200 in 29115ms
+ GET /news/category/national 200 in 67591ms
+ POST /api/analytics/collect 200 in 13102ms
+ ○ Compiling /studio/login ...
+ GET / 200 in 105544ms
+ GET /news/category/university 200 in 76315ms
+ ✓ Compiled /studio/login in 74.3s (1462 modules)
+ POST /api/analytics/collect 200 in 36644ms
+ POST /api/analytics/collect 200 in 43223ms
+ POST /api/analytics/collect 200 in 36751ms
+ POST /api/analytics/collect 200 in 37040ms
+ POST /api/analytics/collect 200 in 8122ms
+ POST /api/analytics/collect 200 in 7457ms
+ GET / 200 in 12483ms
+ POST /api/analytics/collect 200 in 1111ms
+ POST /api/analytics/collect 200 in 205ms
+ ✓ Compiled in 100.8s (542 modules)
+ POST /api/analytics/collect 200 in 23054ms
+ POST /api/analytics/collect 200 in 5159ms
+ POST /api/analytics/collect 200 in 5406ms
+ POST /api/analytics/collect 200 in 8158ms
+ POST /api/analytics/collect 200 in 7670ms
+ POST /api/analytics/collect 200 in 5815ms
+ ✓ Compiled in 12.5s (542 modules)
+ POST /api/analytics/collect 200 in 3392ms
+ POST /api/analytics/collect 200 in 3443ms
+ ✓ Compiled in 5.3s (542 modules)
+ POST /api/analytics/collect 200 in 1433ms
+ POST /api/analytics/collect 200 in 851ms
+ ○ Compiling /student-journalism ...
+ ⨯ SyntaxError: Unexpected end of JSON input
+    at JSON.parse (<anonymous>) {
+  page: '/api/analytics/collect'
+}
+ POST /api/analytics/collect 200 in 12280ms
+ ✓ Compiled /student-journalism in 76.2s (1374 modules)
+ POST /api/analytics/collect 500 in 70486ms
+ POST /api/analytics/collect 200 in 44741ms
+ POST /api/analytics/collect 200 in 45754ms
+ POST /api/analytics/collect 200 in 17413ms
+ POST /api/analytics/collect 200 in 18127ms
+ POST /api/analytics/collect 200 in 4280ms
+ POST /api/analytics/collect 200 in 5455ms
+ GET /student-journalism 200 in 97793ms
+ POST /api/analytics/collect 200 in 2320ms
+ ✓ Compiled in 13.7s (542 modules)
+ POST /api/analytics/collect 200 in 12703ms
+ POST /api/analytics/collect 200 in 1120ms
+ GET /student-journalism 200 in 3907ms
+ ○ Compiling /_not-found ...
+ ✓ Compiled /resources in 338.4s (1381 modules)
+ POST /api/analytics/collect 404 in 357920ms
+ POST /api/analytics/collect 404 in 357116ms
+ POST /api/analytics/collect 404 in 356292ms
+ POST /api/analytics/collect 404 in 356082ms
+ POST /api/analytics/collect 200 in 369996ms
+ POST /api/analytics/collect 200 in 324940ms
+ POST /api/analytics/collect 200 in 287315ms
+ POST /api/analytics/collect 200 in 352077ms
+ POST /api/analytics/collect 200 in 234708ms
+ POST /api/analytics/collect 200 in 400296ms
+ POST /api/analytics/collect 200 in 319688ms
+ ○ Compiling /team ...
+ GET /resources 200 in 350307ms
+ ⚠ Fast Refresh had to perform a full reload. Read more: https://nextjs.org/docs/messages/fast-refresh-reload
+ ✓ Compiled /team in 124.8s (1379 modules)
+ POST /api/analytics/collect 200 in 134560ms
+ POST /api/analytics/collect 200 in 134684ms
+ POST /api/analytics/collect 200 in 136074ms
+ POST /api/analytics/collect 200 in 136093ms
+ POST /api/analytics/collect 200 in 134975ms
+ POST /api/analytics/collect 200 in 131229ms
+ POST /api/analytics/collect 200 in 135419ms
+ POST /api/analytics/collect 200 in 135427ms
+ POST /api/analytics/collect 200 in 135461ms
+ POST /api/analytics/collect 200 in 135092ms
+ POST /api/analytics/collect 200 in 135762ms
+ POST /api/analytics/collect 200 in 1782ms
+ POST /api/analytics/collect 200 in 1803ms
+ POST /api/analytics/collect 200 in 1845ms
+ POST /api/analytics/collect 200 in 1669ms
+ POST /api/analytics/collect 200 in 1702ms
+ POST /api/analytics/collect 200 in 1778ms
+ POST /api/analytics/collect 200 in 1708ms
+ POST /api/analytics/collect 200 in 1826ms
+ POST /api/analytics/collect 200 in 4447ms
+ POST /api/analytics/collect 200 in 5381ms
+ GET /team 200 in 146383ms
+ POST /api/analytics/collect 200 in 9248ms
+ POST /api/analytics/collect 200 in 9617ms
+ POST /api/analytics/collect 200 in 8626ms
+ POST /api/analytics/collect 200 in 8692ms
+ POST /api/analytics/collect 200 in 7025ms
+ POST /api/analytics/collect 200 in 6228ms
+ POST /api/analytics/collect 200 in 6670ms
+ POST /api/analytics/collect 200 in 2509ms
+ POST /api/analytics/collect 200 in 925ms
+ GET / 200 in 13807ms
+ ✓ Compiled in 15.2s (542 modules)
+ POST /api/analytics/collect 200 in 18559ms
+ POST /api/analytics/collect 200 in 25457ms
+ ✓ Compiled in 23.3s (542 modules)
+ POST /api/analytics/collect 200 in 4406ms
+ GET /team 200 in 20183ms
+ GET /team 200 in 2217ms
+ POST /api/analytics/collect 200 in 4221ms
+ POST /api/analytics/collect 200 in 3603ms
+ ✓ Compiled in 10.3s (542 modules)
+ POST /api/analytics/collect 200 in 4843ms
+ GET /team 200 in 3350ms
+ POST /api/analytics/collect 200 in 994ms
+ POST /api/analytics/collect 200 in 1889ms
+ POST /api/analytics/collect 200 in 1183ms
+ GET / 200 in 3661ms
+ ○ Compiling /_not-found ...
+ ✓ Compiled /_not-found in 29.8s (1381 modules)
+ GET / 404 in 30017ms
+ POST /api/analytics/collect 200 in 3091ms
+ ○ Compiling /about ...
+ ✓ Compiled /about in 21.1s (837 modules)
+ GET /team 200 in 42389ms
+ ✓ Compiled in 33.4s (546 modules)
+ POST /api/analytics/collect 200 in 77015ms
+ POST /api/analytics/collect 200 in 53907ms
+ POST /api/analytics/collect 200 in 25399ms
+ POST /api/analytics/collect 200 in 42867ms
+ POST /api/analytics/collect 200 in 73735ms
+ GET /about 200 in 92275ms
+ POST /api/analytics/collect 200 in 27641ms
+ ✓ Compiled in 30.5s (542 modules)
+ POST /api/analytics/collect 200 in 7461ms
+ POST /api/analytics/collect 200 in 11963ms
+ GET /team 200 in 16733ms
+ ✓ Compiled in 40.6s (542 modules)
+ POST /api/analytics/collect 200 in 25140ms
+ POST /api/analytics/collect 200 in 8451ms
+ GET /student-journalism 200 in 35975ms
+ GET / 200 in 146807ms
+ ✓ Compiled in 17.2s (542 modules)
+ POST /api/analytics/collect 200 in 5684ms
+ GET /team 200 in 95353ms
+ ○ Compiling /contact ...
+ GET / 200 in 82678ms
+ GET /team 200 in 40768ms
+ GET / 200 in 32743ms
+ ✓ Compiled /contact in 64.5s (1382 modules)
+ POST /api/analytics/collect 200 in 38898ms
+ POST /api/analytics/collect 200 in 75737ms
+ POST /api/analytics/collect 200 in 61554ms
+ POST /api/analytics/collect 200 in 95343ms
+ POST /api/analytics/collect 200 in 31975ms
+ GET /contact 200 in 100150ms
+ POST /api/analytics/collect 200 in 13605ms
+ GET /team 200 in 71350ms
+ GET / 200 in 71343ms
+ ○ Compiling /academics ...
+ ✓ Compiled /academics in 83.3s (1384 modules)
+ POST /api/analytics/collect 200 in 30764ms
+ POST /api/analytics/collect 200 in 88688ms
+ POST /api/analytics/collect 200 in 43025ms
+ GET /academics 200 in 115648ms
+ POST /api/analytics/collect 200 in 78292ms
+ POST /api/analytics/collect 200 in 73466ms
+ POST /api/analytics/collect 200 in 78672ms
+ POST /api/analytics/collect 200 in 56748ms
+ POST /api/analytics/collect 200 in 10969ms
+ POST /api/analytics/collect 200 in 8230ms
+ ✓ Compiled in 13.2s (542 modules)
+ ○ Compiling /faculty ...
+ POST /api/analytics/collect 200 in 7962ms
+ GET /team 200 in 141540ms
+ GET / 200 in 103989ms
+ GET /team 200 in 19106ms
+ GET / 200 in 19064ms
+ ✓ Compiled /faculty in 49.7s (1380 modules)
+ POST /api/analytics/collect 200 in 25083ms
+ POST /api/analytics/collect 200 in 24579ms
+ POST /api/analytics/collect 200 in 45154ms
+ GET /faculty 200 in 66175ms
+ POST /api/analytics/collect 200 in 4765ms
+ GET /team 200 in 45633ms
+ GET / 200 in 46188ms
+ GET /team 200 in 1652ms
+ GET / 200 in 640ms
+ GET / 200 in 1726ms
+ GET /team 200 in 1365ms
+ GET / 200 in 735ms
+ GET / 200 in 905ms
+ GET / 200 in 20581ms
+ ✓ Compiled in 26.8s (542 modules)
+ GET /team 200 in 4723ms
+ GET / 200 in 1264ms
+ GET / 200 in 1948ms
+ ○ Compiling /about ...
+ ✓ Compiled /about in 15.5s (826 modules)
+ GET /about 200 in 40692ms
+ GET /team 200 in 10386ms
+ GET /student-journalism 200 in 1648ms
+ ○ Compiling /contact ...
+ ✓ Compiled /contact in 7.6s (832 modules)
+ GET /contact 200 in 10781ms
+ ○ Compiling /academics ...
+ ✓ Compiled /academics in 2.1s (834 modules)
+ GET /academics 200 in 4207ms
+ ○ Compiling /faculty ...
+ ✓ Compiled /faculty in 2.4s (836 modules)
+ GET /faculty 200 in 7469ms
+ GET /about 200 in 2529ms
+ GET /about 200 in 1382ms
+ ✓ Compiled in 36.6s (1370 modules)
+ GET / 200 in 24310ms
+ GET / 200 in 2486ms
+ GET /team 200 in 456ms
+ ✓ Compiled in 3.8s (542 modules)
+ GET /team 200 in 3788ms
+ ○ Compiling /api/analytics/collect ...
+ ✓ Compiled /setup in 74s (2178 modules)
+ POST /api/analytics/collect 200 in 57320ms
+ GET /setup 200 in 43349ms
+ GET / 200 in 71283ms
+ GET /team 200 in 8257ms
+ GET / 200 in 1212ms
+ ✓ Compiled in 6.2s (542 modules)
+ ✓ Compiled in 4.9s (542 modules)
+ ✓ Compiled in 7.8s (542 modules)
+ GET /team 200 in 21722ms
+ ✓ Compiled in 5.3s (542 modules)
+ GET / 200 in 23481ms
+ GET /team 200 in 13820ms
+ GET / 200 in 10724ms
+ GET /team 200 in 3650ms
+ GET / 200 in 3852ms
+ GET / 200 in 1702ms
+ GET /team 200 in 1768ms
+ POST /api/analytics/collect 200 in 24047ms
+ ✓ Compiled in 38.9s (542 modules)
+ ✓ Compiled in 30.5s (542 modules)
+ ✓ Compiled in 5.3s (542 modules)
+ GET /team 200 in 38198ms
+ GET / 200 in 22292ms
+ GET / 200 in 5479ms
+ GET /team 200 in 5100ms
+ GET / 200 in 1765ms
+ GET /team 200 in 1598ms
+ GET / 200 in 10279ms
+ ○ Compiling /about ...
+ ✓ Compiled /about in 5.6s (826 modules)
+ GET /about 200 in 9662ms
+ GET /team 200 in 1108ms
+ GET /student-journalism 200 in 1185ms
+ ○ Compiling /contact ...
+ ✓ Compiled /contact in 11.4s (832 modules)
+ GET /contact 200 in 13927ms
+ ○ Compiling /academics ...
+ ✓ Compiled /academics in 5.9s (834 modules)
+ GET /academics 200 in 9606ms
+ ○ Compiling /faculty ...
+ ✓ Compiled /faculty in 3.2s (836 modules)
+ GET /faculty 200 in 5962ms
+ ○ Compiling /news ...
+ ✓ Compiled /news in 8.8s (838 modules)
+ GET /news 200 in 15337ms
+ ○ Compiling /setup ...
+ GET /team 200 in 20296ms
+ GET / 200 in 15085ms
+ ✓ Compiled /setup in 38.7s (1644 modules)
+ GET /setup 200 in 45676ms
+ ○ Compiling /studio/login ...
+ ✓ Compiled /studio/login in 11.5s (1721 modules)
+ GET /studio/login 200 in 14935ms
+ ✓ Compiled in 14.2s (542 modules)
+ ✓ Compiled in 7s (542 modules)
+ GET /team 200 in 7341ms
+ GET / 200 in 1408ms
+ GET /team 200 in 394ms
+ GET / 200 in 1235ms
+ ○ Compiling /api/analytics/collect ...
+ ✓ Compiled /api/analytics/collect in 18.4s (834 modules)
+ POST /api/analytics/collect 200 in 23649ms
+ ✓ Compiled in 6.7s (542 modules)
+ POST /api/analytics/collect 200 in 809ms
+ ✓ Compiled in 11.6s (542 modules)
+ POST /api/analytics/collect 200 in 901ms
+ ✓ Compiled in 2.1s (542 modules)
+ ✓ Compiled in 1202ms (542 modules)
+ ✓ Compiled in 388ms (542 modules)
+ POST /api/analytics/collect 200 in 209ms
+ ✓ Compiled in 1322ms (542 modules)
+ POST /api/analytics/collect 200 in 254ms
+ ✓ Compiled in 1161ms (542 modules)
+ POST /api/analytics/collect 200 in 257ms
+ ✓ Compiled in 1377ms (542 modules)
+ POST /api/analytics/collect 200 in 781ms
+ POST /api/analytics/collect 200 in 783ms
+ ✓ Compiled in 1618ms (542 modules)
+ ✓ Compiled in 1910ms (542 modules)
+ POST /api/analytics/collect 200 in 305ms
+ ⚠ Server is approaching the used memory threshold, restarting...
+   ▲ Next.js 15.5.28
+   - Local:        http://localhost:3000
+   - Network:      http://10.33.240.218:3000
+   - Environments: .env
+   - Experiments (use with caution):
+     · serverActions
+
+ ✓ Starting...
+ ✓ Ready in 8.1s
+ ○ Compiling /api/analytics/collect ...
+ ✓ Compiled /api/analytics/collect in 4.9s (436 modules)
+ POST /api/analytics/collect 200 in 5788ms
+ POST /api/analytics/collect 200 in 5827ms
+ POST /api/analytics/collect 200 in 536ms
+ POST /api/analytics/collect 200 in 567ms
+ POST /api/analytics/collect 200 in 250ms
+ POST /api/analytics/collect 200 in 238ms
+ POST /api/analytics/collect 200 in 606ms
+ POST /api/analytics/collect 200 in 858ms
+ POST /api/analytics/collect 200 in 251ms
+ POST /api/analytics/collect 200 in 263ms
+ POST /api/analytics/collect 200 in 537ms
+ POST /api/analytics/collect 200 in 556ms
+ POST /api/analytics/collect 200 in 267ms
+ POST /api/analytics/collect 200 in 153ms
+ POST /api/analytics/collect 200 in 456ms
+ POST /api/analytics/collect 200 in 456ms
+ POST /api/analytics/collect 200 in 504ms
+ POST /api/analytics/collect 200 in 527ms
+ POST /api/analytics/collect 200 in 211ms
+ POST /api/analytics/collect 200 in 229ms
+ POST /api/analytics/collect 200 in 161ms
+ POST /api/analytics/collect 200 in 170ms
+ POST /api/analytics/collect 200 in 348ms
+ POST /api/analytics/collect 200 in 343ms
+ POST /api/analytics/collect 200 in 297ms
+ POST /api/analytics/collect 200 in 333ms
+ POST /api/analytics/collect 200 in 653ms
+ POST /api/analytics/collect 200 in 417ms
+ POST /api/analytics/collect 200 in 200ms
+ POST /api/analytics/collect 200 in 199ms
+ POST /api/analytics/collect 200 in 284ms
+ POST /api/analytics/collect 200 in 254ms
+ POST /api/analytics/collect 200 in 416ms
+ POST /api/analytics/collect 200 in 412ms
+ POST /api/analytics/collect 200 in 342ms
+ POST /api/analytics/collect 200 in 361ms
+ POST /api/analytics/collect 200 in 979ms
+ POST /api/analytics/collect 200 in 421ms
+ POST /api/analytics/collect 200 in 415ms
+ POST /api/analytics/collect 200 in 81ms
+ POST /api/analytics/collect 200 in 232ms
+ POST /api/analytics/collect 200 in 952ms
+ POST /api/analytics/collect 200 in 202ms
+ POST /api/analytics/collect 200 in 155ms
+ POST /api/analytics/collect 200 in 263ms
+ POST /api/analytics/collect 200 in 239ms
+ POST /api/analytics/collect 200 in 436ms
+ POST /api/analytics/collect 200 in 407ms
+ POST /api/analytics/collect 200 in 173ms
+ POST /api/analytics/collect 200 in 100ms
+ POST /api/analytics/collect 200 in 274ms
+ POST /api/analytics/collect 200 in 294ms
+ POST /api/analytics/collect 200 in 284ms
+ POST /api/analytics/collect 200 in 297ms
+ POST /api/analytics/collect 200 in 436ms
+ POST /api/analytics/collect 200 in 435ms
+ POST /api/analytics/collect 200 in 238ms
+ POST /api/analytics/collect 200 in 219ms
+ POST /api/analytics/collect 200 in 210ms
+ POST /api/analytics/collect 200 in 208ms
+ POST /api/analytics/collect 200 in 304ms
+ POST /api/analytics/collect 200 in 313ms
+ POST /api/analytics/collect 200 in 994ms
+ POST /api/analytics/collect 200 in 1024ms
+ POST /api/analytics/collect 200 in 343ms
+ POST /api/analytics/collect 200 in 317ms
+ POST /api/analytics/collect 200 in 359ms
+ POST /api/analytics/collect 200 in 413ms
+ POST /api/analytics/collect 200 in 193ms
+ POST /api/analytics/collect 200 in 245ms
+ POST /api/analytics/collect 200 in 461ms
+ POST /api/analytics/collect 200 in 469ms
+ POST /api/analytics/collect 200 in 689ms
+ POST /api/analytics/collect 200 in 694ms
+ POST /api/analytics/collect 200 in 288ms
+ POST /api/analytics/collect 200 in 292ms
+ POST /api/analytics/collect 200 in 443ms
+ POST /api/analytics/collect 200 in 461ms
+ POST /api/analytics/collect 200 in 306ms
+ POST /api/analytics/collect 200 in 307ms
+ POST /api/analytics/collect 200 in 233ms
+ POST /api/analytics/collect 200 in 236ms
+ POST /api/analytics/collect 200 in 173ms
+ POST /api/analytics/collect 200 in 85ms
+ POST /api/analytics/collect 200 in 400ms
+ POST /api/analytics/collect 200 in 393ms
+ POST /api/analytics/collect 200 in 517ms
+ POST /api/analytics/collect 200 in 491ms
+ POST /api/analytics/collect 200 in 287ms
+ POST /api/analytics/collect 200 in 79ms
+ POST /api/analytics/collect 200 in 344ms
+ POST /api/analytics/collect 200 in 340ms
+ POST /api/analytics/collect 200 in 297ms
+ POST /api/analytics/collect 200 in 278ms
+ POST /api/analytics/collect 200 in 361ms
+ POST /api/analytics/collect 200 in 384ms
+ POST /api/analytics/collect 200 in 373ms
+ POST /api/analytics/collect 200 in 514ms
+ POST /api/analytics/collect 200 in 316ms
+ POST /api/analytics/collect 200 in 102ms
+ POST /api/analytics/collect 200 in 825ms
+ POST /api/analytics/collect 200 in 835ms
+ POST /api/analytics/collect 200 in 291ms
+ POST /api/analytics/collect 200 in 287ms
+ POST /api/analytics/collect 200 in 261ms
+ POST /api/analytics/collect 200 in 269ms
+ POST /api/analytics/collect 200 in 527ms
+ POST /api/analytics/collect 200 in 512ms
+ POST /api/analytics/collect 200 in 215ms
+ POST /api/analytics/collect 200 in 255ms
+ POST /api/analytics/collect 200 in 188ms
+ POST /api/analytics/collect 200 in 138ms
+ POST /api/analytics/collect 200 in 378ms
+ POST /api/analytics/collect 200 in 370ms
+ POST /api/analytics/collect 200 in 165ms
+ POST /api/analytics/collect 200 in 173ms
+ POST /api/analytics/collect 200 in 140ms
+ POST /api/analytics/collect 200 in 377ms
+ POST /api/analytics/collect 200 in 230ms
+ POST /api/analytics/collect 200 in 96ms
+ POST /api/analytics/collect 200 in 231ms
+ POST /api/analytics/collect 200 in 213ms
+ POST /api/analytics/collect 200 in 201ms
+ POST /api/analytics/collect 200 in 308ms
+ POST /api/analytics/collect 200 in 382ms
+ POST /api/analytics/collect 200 in 401ms
+ POST /api/analytics/collect 200 in 257ms
+ POST /api/analytics/collect 200 in 249ms
+ POST /api/analytics/collect 200 in 206ms
+ POST /api/analytics/collect 200 in 47ms
+ POST /api/analytics/collect 200 in 248ms
+ POST /api/analytics/collect 200 in 155ms
+ POST /api/analytics/collect 200 in 619ms
+ POST /api/analytics/collect 200 in 610ms
+ POST /api/analytics/collect 200 in 346ms
+ POST /api/analytics/collect 200 in 357ms
+ POST /api/analytics/collect 200 in 254ms
+ POST /api/analytics/collect 200 in 156ms
+ POST /api/analytics/collect 200 in 103ms
+ POST /api/analytics/collect 200 in 58ms
+ POST /api/analytics/collect 200 in 356ms
+ POST /api/analytics/collect 200 in 357ms
+ POST /api/analytics/collect 200 in 173ms
+ POST /api/analytics/collect 200 in 229ms
+ POST /api/analytics/collect 200 in 72ms
+ POST /api/analytics/collect 200 in 95ms
+ POST /api/analytics/collect 200 in 231ms
+ POST /api/analytics/collect 200 in 237ms
+ POST /api/analytics/collect 200 in 125ms
+ POST /api/analytics/collect 200 in 113ms
+ POST /api/analytics/collect 200 in 686ms
+ POST /api/analytics/collect 200 in 690ms
+ POST /api/analytics/collect 200 in 193ms
+ POST /api/analytics/collect 200 in 228ms
+ POST /api/analytics/collect 200 in 184ms
+ POST /api/analytics/collect 200 in 373ms
+ POST /api/analytics/collect 200 in 765ms
+ POST /api/analytics/collect 200 in 759ms
+ POST /api/analytics/collect 200 in 185ms
+ POST /api/analytics/collect 200 in 415ms
+ POST /api/analytics/collect 200 in 133ms
+ POST /api/analytics/collect 200 in 137ms
+ POST /api/analytics/collect 200 in 388ms
+ POST /api/analytics/collect 200 in 386ms
+ POST /api/analytics/collect 200 in 186ms
+ POST /api/analytics/collect 200 in 146ms
+ POST /api/analytics/collect 200 in 723ms
+ POST /api/analytics/collect 200 in 726ms
+ POST /api/analytics/collect 200 in 398ms
+ POST /api/analytics/collect 200 in 408ms
+ POST /api/analytics/collect 200 in 401ms
+ POST /api/analytics/collect 200 in 401ms
+ POST /api/analytics/collect 200 in 193ms
+ POST /api/analytics/collect 200 in 210ms
+ POST /api/analytics/collect 200 in 440ms
+ POST /api/analytics/collect 200 in 465ms
+ POST /api/analytics/collect 200 in 128ms
+ POST /api/analytics/collect 200 in 204ms
+ POST /api/analytics/collect 200 in 202ms
+ POST /api/analytics/collect 200 in 190ms
+ POST /api/analytics/collect 200 in 702ms
+ POST /api/analytics/collect 200 in 707ms
+ POST /api/analytics/collect 200 in 379ms
+ POST /api/analytics/collect 200 in 400ms
+ POST /api/analytics/collect 200 in 266ms
+ POST /api/analytics/collect 200 in 275ms
+ POST /api/analytics/collect 200 in 242ms
+ POST /api/analytics/collect 200 in 248ms
+ POST /api/analytics/collect 200 in 324ms
+ POST /api/analytics/collect 200 in 337ms
+ POST /api/analytics/collect 200 in 60ms
+ POST /api/analytics/collect 200 in 441ms
+ POST /api/analytics/collect 200 in 318ms
+ POST /api/analytics/collect 200 in 321ms
+ POST /api/analytics/collect 200 in 197ms
+ POST /api/analytics/collect 200 in 286ms
+ POST /api/analytics/collect 200 in 268ms
+ POST /api/analytics/collect 200 in 277ms
+ POST /api/analytics/collect 200 in 226ms
+ POST /api/analytics/collect 200 in 281ms
+ POST /api/analytics/collect 200 in 138ms
+ POST /api/analytics/collect 200 in 146ms
+ POST /api/analytics/collect 200 in 283ms
+ POST /api/analytics/collect 200 in 293ms
+ POST /api/analytics/collect 200 in 435ms
+ POST /api/analytics/collect 200 in 611ms
+ POST /api/analytics/collect 200 in 458ms
+ POST /api/analytics/collect 200 in 287ms
+ POST /api/analytics/collect 200 in 312ms
+ POST /api/analytics/collect 200 in 428ms
+ POST /api/analytics/collect 200 in 255ms
+ POST /api/analytics/collect 200 in 274ms
+ POST /api/analytics/collect 200 in 217ms
+ POST /api/analytics/collect 200 in 265ms
+ POST /api/analytics/collect 200 in 697ms
+ POST /api/analytics/collect 200 in 710ms
+ POST /api/analytics/collect 200 in 922ms
+ POST /api/analytics/collect 200 in 184ms
+ POST /api/analytics/collect 200 in 181ms
+ POST /api/analytics/collect 200 in 93ms
+ POST /api/analytics/collect 200 in 92ms
+ POST /api/analytics/collect 200 in 148ms
+ POST /api/analytics/collect 200 in 750ms
+ POST /api/analytics/collect 200 in 461ms
+ POST /api/analytics/collect 200 in 523ms
+ POST /api/analytics/collect 200 in 540ms
+ POST /api/analytics/collect 200 in 100ms
+ POST /api/analytics/collect 200 in 95ms
+ POST /api/analytics/collect 200 in 233ms
+ POST /api/analytics/collect 200 in 223ms
+ POST /api/analytics/collect 200 in 667ms
+ POST /api/analytics/collect 200 in 673ms
+ POST /api/analytics/collect 200 in 625ms
+ POST /api/analytics/collect 200 in 825ms
+ POST /api/analytics/collect 200 in 458ms
+ POST /api/analytics/collect 200 in 257ms
+ POST /api/analytics/collect 200 in 408ms
+ POST /api/analytics/collect 200 in 365ms
+ POST /api/analytics/collect 200 in 665ms
+ POST /api/analytics/collect 200 in 679ms
+ POST /api/analytics/collect 200 in 850ms
+ POST /api/analytics/collect 200 in 648ms
+ POST /api/analytics/collect 200 in 618ms
+ POST /api/analytics/collect 200 in 685ms
+ POST /api/analytics/collect 200 in 200ms
+ POST /api/analytics/collect 200 in 200ms
+ POST /api/analytics/collect 200 in 352ms
+ POST /api/analytics/collect 200 in 248ms
+ POST /api/analytics/collect 200 in 101ms
+ POST /api/analytics/collect 200 in 117ms
+ POST /api/analytics/collect 200 in 475ms
+ POST /api/analytics/collect 200 in 494ms
+ POST /api/analytics/collect 200 in 746ms
+ POST /api/analytics/collect 200 in 647ms
+ POST /api/analytics/collect 200 in 291ms
+ POST /api/analytics/collect 200 in 301ms
+ POST /api/analytics/collect 200 in 423ms
+ POST /api/analytics/collect 200 in 446ms
+ POST /api/analytics/collect 200 in 261ms
+ POST /api/analytics/collect 200 in 505ms
+ POST /api/analytics/collect 200 in 551ms
+ POST /api/analytics/collect 200 in 548ms
+ POST /api/analytics/collect 200 in 874ms
+ POST /api/analytics/collect 200 in 968ms
+ POST /api/analytics/collect 200 in 128ms
+ POST /api/analytics/collect 200 in 154ms
+ POST /api/analytics/collect 200 in 176ms
+ POST /api/analytics/collect 200 in 266ms
+ POST /api/analytics/collect 200 in 334ms
+ POST /api/analytics/collect 200 in 235ms
+ POST /api/analytics/collect 200 in 165ms
+ POST /api/analytics/collect 200 in 53ms
+ POST /api/analytics/collect 200 in 154ms
+ POST /api/analytics/collect 200 in 103ms
+ POST /api/analytics/collect 200 in 194ms
+ POST /api/analytics/collect 200 in 208ms
+ POST /api/analytics/collect 200 in 508ms
+ POST /api/analytics/collect 200 in 872ms
+ POST /api/analytics/collect 200 in 605ms
+ POST /api/analytics/collect 200 in 2411ms
+ POST /api/analytics/collect 200 in 1643ms
+ POST /api/analytics/collect 200 in 2318ms
+ POST /api/analytics/collect 200 in 1170ms
+ POST /api/analytics/collect 200 in 261ms
+ POST /api/analytics/collect 200 in 419ms
+ POST /api/analytics/collect 200 in 84ms
+ POST /api/analytics/collect 200 in 170ms
+ POST /api/analytics/collect 200 in 85ms
+ POST /api/analytics/collect 200 in 149ms
+ POST /api/analytics/collect 200 in 109ms
+ POST /api/analytics/collect 200 in 60ms
+ POST /api/analytics/collect 200 in 109ms
+ POST /api/analytics/collect 200 in 1077ms
+ ○ Compiling /news ...
+ ✓ Compiled / in 45.9s (865 modules)
+ POST /api/analytics/collect 200 in 31273ms
+ POST /api/analytics/collect 200 in 2688ms
+ POST /api/analytics/collect 200 in 643ms
+ GET /news 200 in 54703ms
+ GET / 200 in 51976ms
+ GET / 200 in 31178ms
+ POST /api/analytics/collect 200 in 728ms
+ ✓ Compiled in 1365ms (264 modules)
+ ✓ Compiled in 1368ms (264 modules)
+ ✓ Compiled in 1357ms (264 modules)
+ POST /api/analytics/collect 200 in 670ms
+ ✓ Compiled in 4.2s (264 modules)
+ ✓ Compiled in 2.1s (264 modules)
+ POST /api/analytics/collect 200 in 736ms
+ ✓ Compiled in 1095ms (264 modules)
+ POST /api/analytics/collect 200 in 390ms
+ ✓ Compiled in 707ms (264 modules)
+ POST /api/analytics/collect 200 in 997ms
+ ✓ Compiled in 1858ms (264 modules)
+ POST /api/analytics/collect 200 in 159ms
+ ✓ Compiled in 4.4s (264 modules)
+ POST /api/analytics/collect 200 in 156ms
+ ✓ Compiled in 2.3s (264 modules)
+ POST /api/analytics/collect 200 in 128ms
+ ✓ Compiled in 2.2s (264 modules)
+ POST /api/analytics/collect 200 in 191ms
+ ✓ Compiled in 2.1s (264 modules)
+ POST /api/analytics/collect 200 in 353ms
+ ✓ Compiled in 1952ms (264 modules)
+ POST /api/analytics/collect 200 in 215ms
+ POST /api/analytics/collect 200 in 127ms
+ ✓ Compiled in 1006ms (264 modules)
+ ✓ Compiled in 765ms (264 modules)
+ ✓ Compiled in 381ms (264 modules)
+ POST /api/analytics/collect 200 in 557ms
+ POST /api/analytics/collect 200 in 409ms
+ ✓ Compiled in 3.1s (264 modules)
+ POST /api/analytics/collect 200 in 345ms
+ ✓ Compiled in 1652ms (264 modules)
+ POST /api/analytics/collect 200 in 295ms
+ ✓ Compiled in 2.2s (264 modules)
+ POST /api/analytics/collect 200 in 183ms
+ ✓ Compiled in 1833ms (264 modules)
+ POST /api/analytics/collect 200 in 100ms
+ POST /api/analytics/collect 200 in 49ms
+ ✓ Compiled in 4.7s (264 modules)
+ POST /api/analytics/collect 200 in 132ms
+ ✓ Compiled in 1086ms (264 modules)
+ POST /api/analytics/collect 200 in 194ms
+ ✓ Compiled in 959ms (264 modules)
+ POST /api/analytics/collect 200 in 117ms
+ ✓ Compiled in 634ms (264 modules)
+ POST /api/analytics/collect 200 in 176ms
+ ✓ Compiled in 2.1s (264 modules)
+ ✓ Compiled in 538ms (264 modules)
+ ✓ Compiled in 226ms (264 modules)
+ POST /api/analytics/collect 200 in 185ms
+ ✓ Compiled in 617ms (264 modules)
+ POST /api/analytics/collect 200 in 146ms
+ ✓ Compiled in 676ms (264 modules)
+ POST /api/analytics/collect 200 in 149ms
+ POST /api/analytics/collect 200 in 1023ms
+ ✓ Compiled in 907ms (264 modules)
+ POST /api/analytics/collect 200 in 1761ms
+ POST /api/analytics/collect 200 in 567ms
+ ✓ Compiled in 2.4s (264 modules)
+ ✓ Compiled in 1030ms (264 modules)
+ ✓ Compiled in 1219ms (264 modules)
+ POST /api/analytics/collect 200 in 201ms
+ ✓ Compiled in 587ms (264 modules)
+ POST /api/analytics/collect 200 in 165ms
+ ✓ Compiled in 485ms (264 modules)
+ POST /api/analytics/collect 200 in 145ms
+ ✓ Compiled in 1119ms (264 modules)
+ POST /api/analytics/collect 200 in 100ms
+ POST /api/analytics/collect 200 in 100ms
+ ✓ Compiled in 602ms (264 modules)
+ POST /api/analytics/collect 200 in 156ms
+ ✓ Compiled in 2.5s (264 modules)
+ POST /api/analytics/collect 200 in 1950ms
+ POST /api/analytics/collect 200 in 352ms
+ POST /api/analytics/collect 200 in 1682ms
+ ✓ Compiled in 16.3s (264 modules)
+ ✓ Compiled in 9.1s (264 modules)
+ ✓ Compiled in 6.6s (264 modules)
+ POST /api/analytics/collect 200 in 1528ms
+ ✓ Compiled in 3.7s (264 modules)
+ ✓ Compiled in 5s (264 modules)
+ ✓ Compiled in 6.7s (264 modules)
+ POST /api/analytics/collect 200 in 1446ms
+ ✓ Compiled in 3.3s (264 modules)
+ ✓ Compiled in 8.9s (264 modules)
+ ✓ Compiled in 2.9s (264 modules)

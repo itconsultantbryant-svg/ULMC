@@ -1,0 +1,5 @@
+
+> ulmc-cms@1.0.0 worker
+> tsx --env-file=.env src/worker/index.ts
+
+[worker worker-1] started; polling every 2000ms

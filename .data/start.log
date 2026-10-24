@@ -1,0 +1,6 @@
+   ▲ Next.js 15.5.28
+   - Local:        http://localhost:3000
+   - Network:      http://10.33.240.218:3000
+
+ ✓ Starting...
+[Error: Could not find a production build in the '.next' directory. Try building your app with 'next build' before starting the production server. https://nextjs.org/docs/messages/production-start-no-build-id]

@@ -123,23 +123,41 @@ const academics = [
   },
 ];
 
-async function ensureSeedUser(input: { email: string; name: string; role: "staff" | "editor" | "admin"; title: string }) {
-  const [existing] = await db.select({ id: user.id }).from(user).where(eq(user.email, input.email)).limit(1);
-  if (existing) return existing;
-  const [created] = await db
-    .insert(user)
-    .values({
-      id: randomUUID(),
-      email: input.email,
-      name: input.name,
-      role: input.role,
-      title: input.title,
-      slug: slugify(input.name),
-      emailVerified: true,
-    })
-    .returning({ id: user.id });
-  if (!created) throw new Error(`Could not create seed user ${input.email}`);
-  return created;
+async function ensureSeedUser(input: { email: string; name: string; role: "staff" | "editor" | "admin"; title: string; password?: string }) {
+  let [existing] = await db.select({ id: user.id }).from(user).where(eq(user.email, input.email)).limit(1);
+  if (!existing) {
+    [existing] = await db
+      .insert(user)
+      .values({
+        id: randomUUID(),
+        email: input.email,
+        name: input.name,
+        role: input.role,
+        title: input.title,
+        slug: slugify(input.name),
+        emailVerified: true,
+      })
+      .returning({ id: user.id });
+  }
+  if (!existing) throw new Error(`Could not create seed user ${input.email}`);
+  if (input.password) {
+    const [credential] = await db
+      .select({ id: account.id })
+      .from(account)
+      .where(eq(account.userId, existing.id))
+      .limit(1);
+    if (!credential) {
+      const passwordHash = await (await auth.$context).password.hash(input.password);
+      await db.insert(account).values({
+        id: randomUUID(),
+        accountId: existing.id,
+        providerId: "credential",
+        userId: existing.id,
+        password: passwordHash,
+      });
+    }
+  }
+  return existing;
 }
 
 async function seedPublicDemoContent() {
@@ -160,6 +178,7 @@ async function seedPublicDemoContent() {
     name: "Grace Taylor",
     role: "admin",
     title: "Managing Editor",
+    password: process.env.DEMO_ADMIN_PASSWORD ?? "ChangeMe123456!",
   });
 
   const categoryRows = await db.select({ id: category.id, slug: category.slug }).from(category);

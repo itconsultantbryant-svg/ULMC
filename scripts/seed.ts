@@ -174,11 +174,11 @@ async function seedPublicDemoContent() {
     title: "News Editor",
   });
   const admin = await ensureSeedUser({
-    email: "grace.taylor@ulmc.demo",
-    name: "Grace Taylor",
+    email: "admin@vasitynewsonline.com",
+    name: "Administrator",
     role: "admin",
     title: "Managing Editor",
-    password: process.env.DEMO_ADMIN_PASSWORD ?? "ChangeMe123456!",
+    password: process.env.DEMO_ADMIN_PASSWORD ?? "ChangeMe123@",
   });
 
   const categoryRows = await db.select({ id: category.id, slug: category.slug }).from(category);

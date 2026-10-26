@@ -21,5 +21,5 @@ All database and worker scripts load `.env` automatically via `tsx --env-file=.e
 - Workflow enforces separation of duties (author cannot approve own story).
 - Two-factor required for privileged roles when enabled in settings.
 - Media served via `/media/[id]`; private assets require auth.
-- The development seed creates `grace.taylor@ulmc.demo` as an administrator. Its password is `DEMO_ADMIN_PASSWORD` when set, otherwise `ChangeMe123456!`; change it before using a shared environment.
+- The development seed creates `admin@vasitynewsonline.com` as an administrator. Its password is `DEMO_ADMIN_PASSWORD` when set, otherwise `ChangeMe123@`; change it before using a shared environment.
 - Deployment details, Vercel environment variables, and the serverless worker cron are in [`docs/VERCEL_DEPLOYMENT.md`](docs/VERCEL_DEPLOYMENT.md).

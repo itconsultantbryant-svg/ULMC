@@ -4,6 +4,7 @@ import { requirePageUser } from "@/server/session";
 import { readSiteSettings } from "@/server/settings";
 import { isPrivileged } from "@/server/permissions";
 import { MfaSettings } from "./mfa-settings";
+import { PasswordSettings } from "./password-settings";
 
 export const metadata: Metadata = {
   title: "Account security",
@@ -41,6 +42,13 @@ export default async function SecurityPage({
         <h2 className="text-lg">Two-factor authentication</h2>
         <div className="mt-4">
           <MfaSettings enabled={user.twoFactorEnabled} required={enforced} />
+        </div>
+      </section>
+
+      <section className="rounded-lg border border-line bg-white p-5">
+        <h2 className="text-lg">Change password</h2>
+        <div className="mt-4">
+          <PasswordSettings />
         </div>
       </section>
 

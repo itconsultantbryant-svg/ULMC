@@ -74,6 +74,9 @@ export default async function StudioLayout({ children }: { children: React.React
   if (can(user, "homepage.manage") || can(user, "institutional.manage")) {
     nav.push({ href: "/studio/content", label: "Department content", icon: "content", group: "Manage" });
   }
+  if (can(user, "advertising.manage")) {
+    nav.push({ href: "/studio/advertising", label: "Advertising", icon: "content", group: "Manage" });
+  }
   if (can(user, "settings.manage")) {
     nav.push({ href: "/studio/settings", label: "Settings", icon: "settings", group: "System" });
   }

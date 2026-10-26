@@ -1,6 +1,6 @@
-import { and, eq, isNotNull, isNull, sql } from "drizzle-orm";
+import { and, eq, gte, isNotNull, isNull, lte, or, sql } from "drizzle-orm";
 import { db } from "@/server/db/client";
-import { article, articleRevision, articleRevisionMedia, mediaAsset } from "@/server/db/schema";
+import { advertisement, article, articleRevision, articleRevisionMedia, mediaAsset } from "@/server/db/schema";
 import { env } from "@/lib/env";
 
 export const MEDIA_ROOT = ".data/media";
@@ -22,6 +22,20 @@ export async function isMediaPublic(id: string): Promise<boolean> {
     .limit(1);
   if (!rows[0]) return false;
   if (!rows[0].isPrivate) return true;
+  const now = new Date();
+  const activeAd = await db
+    .select({ id: advertisement.id })
+    .from(advertisement)
+    .where(
+      and(
+        eq(advertisement.mediaId, id),
+        eq(advertisement.isActive, true),
+        or(isNull(advertisement.startsAt), lte(advertisement.startsAt, now)),
+        or(isNull(advertisement.endsAt), gte(advertisement.endsAt, now)),
+      ),
+    )
+    .limit(1);
+  if (activeAd.length > 0) return true;
   const published = await db
     .select({ id: articleRevisionMedia.mediaId })
     .from(articleRevisionMedia)

@@ -17,6 +17,8 @@ export type HeaderAnnouncement = {
 
 const PRIMARY_LINKS = [
   { href: "/news", label: "News" },
+  { href: "/news/category/editorial", label: "Editorials" },
+  { href: "/news/category/opinion", label: "Op-Ed" },
   { href: "/multimedia", label: "Multimedia" },
   { href: "/student-journalism", label: "Student Journalism" },
   { href: "/about", label: "About" },

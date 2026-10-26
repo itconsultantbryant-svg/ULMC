@@ -5,11 +5,12 @@ import { EmptyState } from "@/components/ui/empty-state";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { EventList } from "@/components/site/event-list";
 import { NewsletterForm } from "@/components/site/newsletter-form";
+import { AdColumn } from "@/components/site/ad-column";
 import { getHomepage } from "@/server/public-queries";
 import { env } from "@/lib/env";
 
 export default async function HomePage() {
-  const { lead, supporting, latest, student, multimedia, categories, events, settings } =
+  const { lead, supporting, latest, student, multimedia, categories, events, settings, advertisements } =
     await getHomepage();
 
   const jsonLd = {
@@ -166,6 +167,7 @@ export default async function HomePage() {
         </div>
 
         <aside className="space-y-8">
+          <AdColumn advertisements={advertisements} />
           <section className="rounded-2xl border border-line bg-mist/70 p-5 shadow-soft">
             <h2 className="font-serif text-xl leading-tight text-navy">Study communication at UL</h2>
             <p className="mt-2 text-sm leading-relaxed text-muted">

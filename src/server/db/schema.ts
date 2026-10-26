@@ -603,6 +603,25 @@ export const announcement = pgTable("announcement", {
   createdAt: ts("created_at").notNull().defaultNow(),
 });
 
+export const advertisement = pgTable(
+  "advertisement",
+  {
+    id: uuid("id").primaryKey().defaultRandom(),
+    title: text("title").notNull(),
+    body: text("body").notNull().default(""),
+    mediaId: uuid("media_id").references(() => mediaAsset.id, { onDelete: "set null" }),
+    destinationUrl: text("destination_url"),
+    startsAt: ts("starts_at"),
+    endsAt: ts("ends_at"),
+    isActive: boolean("is_active").notNull().default(true),
+    orderIndex: integer("order_index").notNull().default(0),
+    createdBy: text("created_by").references(() => user.id, { onDelete: "set null" }),
+    createdAt: ts("created_at").notNull().defaultNow(),
+    updatedAt: ts("updated_at").notNull().defaultNow(),
+  },
+  (t) => [index("advertisement_visible_idx").on(t.isActive, t.orderIndex)],
+);
+
 export const sitePage = pgTable("site_page", {
   id: uuid("id").primaryKey().defaultRandom(),
   slug: text("slug").notNull().unique(),

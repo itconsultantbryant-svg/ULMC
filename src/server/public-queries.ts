@@ -447,8 +447,9 @@ export async function getHomepage(): Promise<{
   events: Awaited<ReturnType<typeof getUpcomingEvents>>;
   settings: SiteSettings;
   announcements: (typeof announcement.$inferSelect)[];
+  advertisements: Awaited<ReturnType<typeof import("@/server/advertisements").getVisibleAdvertisements>>;
 }> {
-  const [sections, featured, latest, student, multimedia, categories, events, settings, announcementRow] =
+  const [sections, featured, latest, student, multimedia, categories, events, settings, announcementRow, advertisements] =
     await Promise.all([
       getHomepageSections(),
       getLatestArticles({ limit: 4 }),
@@ -458,7 +459,8 @@ export async function getHomepage(): Promise<{
       getCategories(),
       getUpcomingEvents(4),
       readSiteSettings(),
-      getVisibleAnnouncements(2),
+       getVisibleAnnouncements(2),
+       (await import("@/server/advertisements")).getVisibleAdvertisements(),
     ]);
 
   const lead = featured[0] ?? latest[0] ?? null;
@@ -478,6 +480,7 @@ export async function getHomepage(): Promise<{
     events,
     settings,
     announcements: announcementRow,
+    advertisements,
   };
 }
 

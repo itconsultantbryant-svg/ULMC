@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { Logo } from "@/components/ui/logo";
 import type { SiteSettings } from "@/server/settings";
 import { departmentContact } from "@/content/team";
@@ -102,6 +103,18 @@ export function SiteFooter({ settings }: { settings: SiteSettings }) {
             </p>
             {settings.contactPhone ? <p>{settings.contactPhone}</p> : null}
           </div>
+        </div>
+      </div>
+
+      <div className="border-t border-white/15">
+        <div className="container-page py-6">
+          <div className="flex flex-wrap items-center gap-5">
+            <Image src="/brand/european-union-logo.jpeg" alt="European Union" width={180} height={72} className="h-12 w-auto object-contain" />
+            <Image src="/brand/informed-logo.jpeg" alt="Informed" width={150} height={72} className="h-12 w-auto object-contain" />
+          </div>
+          <p className="mt-4 max-w-5xl text-xs leading-relaxed text-white/65">
+            This website was developed under the Liberia Media Empowerment Project (LMEP), implemented by Informed, (formerly Internews Europe) with funding from the European Union. Views and opinions expressed on this website are however those of the author(s) only and do not necessarily reflect those of the European Union or Informed. Neither the European Union nor Informed can be held responsible for them.
+          </p>
         </div>
       </div>
     </footer>

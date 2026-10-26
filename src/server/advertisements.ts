@@ -78,10 +78,32 @@ export async function deleteAdvertisement(actor: StaffUser, id: string) {
 
 export async function getVisibleAdvertisements(limit = 3) {
   const now = new Date();
-  return db.select({ id: advertisement.id, title: advertisement.title, body: advertisement.body, destinationUrl: advertisement.destinationUrl, mediaId: advertisement.mediaId, mimeType: mediaAsset.mimeType, alt: mediaAsset.alt })
-    .from(advertisement)
-    .leftJoin(mediaAsset, eq(mediaAsset.id, advertisement.mediaId))
-    .where(and(eq(advertisement.isActive, true), or(isNull(advertisement.startsAt), lte(advertisement.startsAt, now)), or(isNull(advertisement.endsAt), gte(advertisement.endsAt, now))))
-    .orderBy(asc(advertisement.orderIndex), asc(advertisement.createdAt))
-    .limit(limit);
+  try {
+    return await db
+      .select({
+        id: advertisement.id,
+        title: advertisement.title,
+        body: advertisement.body,
+        destinationUrl: advertisement.destinationUrl,
+        mediaId: advertisement.mediaId,
+        mimeType: mediaAsset.mimeType,
+        alt: mediaAsset.alt,
+      })
+      .from(advertisement)
+      .leftJoin(mediaAsset, eq(mediaAsset.id, advertisement.mediaId))
+      .where(
+        and(
+          eq(advertisement.isActive, true),
+          or(isNull(advertisement.startsAt), lte(advertisement.startsAt, now)),
+          or(isNull(advertisement.endsAt), gte(advertisement.endsAt, now)),
+        ),
+      )
+      .orderBy(asc(advertisement.orderIndex), asc(advertisement.createdAt))
+      .limit(limit);
+  } catch (error) {
+    // Advertising is optional public content. In particular, do not make the
+    // homepage unavailable while a deployment's database migration is pending.
+    console.error("Failed to load visible advertisements", error);
+    return [];
+  }
 }

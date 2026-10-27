@@ -11,7 +11,7 @@ export const auth = betterAuth({
   appName: "The Varsity Pilot Editorial Workspace",
   baseURL: env.authUrl,
   secret: env.authSecret,
-  trustedOrigins: [env.siteUrl, env.authUrl],
+  trustedOrigins: env.authTrustedOrigins,
   database: drizzleAdapter(db, {
     provider: "pg",
     schema,

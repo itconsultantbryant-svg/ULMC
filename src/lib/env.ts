@@ -34,6 +34,11 @@ export const env = {
   get authUrl() {
     return process.env.BETTER_AUTH_URL || this.siteUrl;
   },
+  get authTrustedOrigins() {
+    return [...new Set([this.siteUrl, this.authUrl, ...(process.env.BETTER_AUTH_TRUSTED_ORIGINS || "").split(",")])]
+      .map((origin) => origin.trim().replace(/\/$/, ""))
+      .filter((origin) => /^https?:\/\//.test(origin));
+  },
   get siteName() {
     return process.env.SITE_NAME || "The Varsity Pilot";
   },

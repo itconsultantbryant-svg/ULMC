@@ -21,6 +21,7 @@ Set these in Vercel. Values marked `generate` must be unique production secrets.
 DATABASE_URL=<Neon pooled or direct PostgreSQL connection URI with sslmode=require>
 NEXT_PUBLIC_SITE_URL=https://<your-vercel-domain>
 BETTER_AUTH_URL=https://<your-vercel-domain>
+BETTER_AUTH_TRUSTED_ORIGINS=https://vasitynews.vercel.app,https://varsitynewsonline.com
 BETTER_AUTH_SECRET=<generate: openssl rand -base64 48>
 MEDIA_SIGNING_SECRET=<generate: openssl rand -base64 48>
 CRON_SECRET=<generate: openssl rand -hex 32>

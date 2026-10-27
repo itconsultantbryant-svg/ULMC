@@ -102,6 +102,17 @@ export function SiteFooter({ settings }: { settings: SiteSettings }) {
               </a>
             </p>
             {settings.contactPhone ? <p>{settings.contactPhone}</p> : null}
+            <p>
+              Developed by:{" "}
+              <a
+                className="hover:text-white hover:underline"
+                href="https://af-md.vercel.app/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Samson Bryant
+              </a>
+            </p>
           </div>
         </div>
       </div>

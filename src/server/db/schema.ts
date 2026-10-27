@@ -552,6 +552,21 @@ export const facultyProfile = pgTable("faculty_profile", {
   updatedAt: ts("updated_at").notNull().defaultNow(),
 });
 
+export const teamMember = pgTable("team_member", {
+  id: uuid("id").primaryKey().defaultRandom(),
+  name: text("name").notNull(),
+  role: text("role").notNull(),
+  group: text("group").notNull().default("editorial"),
+  bio: text("bio").notNull().default(""),
+  photoId: uuid("photo_id").references(() => mediaAsset.id, { onDelete: "set null" }),
+  email: text("email"),
+  phone: text("phone"),
+  orderIndex: integer("order_index").notNull().default(0),
+  isActive: boolean("is_active").notNull().default(true),
+  createdAt: ts("created_at").notNull().defaultNow(),
+  updatedAt: ts("updated_at").notNull().defaultNow(),
+});
+
 export const academicPage = pgTable("academic_page", {
   id: uuid("id").primaryKey().defaultRandom(),
   slug: text("slug").notNull().unique(),

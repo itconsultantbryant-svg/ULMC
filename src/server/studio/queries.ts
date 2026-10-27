@@ -1,5 +1,5 @@
 import { and, asc, desc, eq, inArray, isNull, sql, type SQL } from "drizzle-orm";
-import { academicPage, facultyProfile } from "@/server/db/schema";
+import { academicPage, facultyProfile, teamMember } from "@/server/db/schema";
 import { alias } from "drizzle-orm/pg-core";
 import { db } from "@/server/db/client";
 import {
@@ -61,6 +61,15 @@ function scopeFor(user: StaffUser): SQL | undefined {
 }
 
 const REVIEW_STATUSES = ["submitted", "resubmitted", "in_review"];
+
+export async function listAllTeamMembers() {
+  return db.select().from(teamMember).orderBy(asc(teamMember.group), asc(teamMember.orderIndex), asc(teamMember.name));
+}
+
+export async function getTeamMemberById(id: string) {
+  const [member] = await db.select().from(teamMember).where(eq(teamMember.id, id)).limit(1);
+  return member ?? null;
+}
 
 export async function getUnreadNotificationCount(userId: string): Promise<number> {
   const [row] = await db

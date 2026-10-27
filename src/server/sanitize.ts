@@ -77,6 +77,18 @@ const options: sanitizeHtml.IOptions = {
         attribs: { ...attribs, loading: attribs.loading ?? "lazy" },
       };
     },
+    audio: (tagName, attribs): sanitizeHtml.Tag => {
+      const src = attribs.src ?? "";
+      return MEDIA_PATH.test(src) || /^https:\/\//i.test(src)
+        ? { tagName, attribs: { ...attribs, preload: attribs.preload ?? "metadata" } }
+        : { tagName: "span", attribs: {} as sanitizeHtml.Attributes };
+    },
+    video: (tagName, attribs): sanitizeHtml.Tag => {
+      const src = attribs.src ?? "";
+      return MEDIA_PATH.test(src) || /^https:\/\//i.test(src)
+        ? { tagName, attribs: { ...attribs, preload: attribs.preload ?? "metadata" } }
+        : { tagName: "span", attribs: {} as sanitizeHtml.Attributes };
+    },
   },
   exclusiveFilter: (frame) =>
     ["iframe", "img", "audio", "video"].includes(frame.tag) && !frame.attribs.src,

@@ -17,10 +17,12 @@ import {
   resourceDownload,
   sitePage,
   tag,
+  teamMember,
   user,
 } from "@/server/db/schema";
 import { cached, PUBLIC_CONTENT_TAG } from "@/server/cache";
 import { readSiteSettings, type SiteSettings } from "@/server/settings";
+import { team as defaultTeam } from "@/content/team";
 
 export type PublicAuthor = {
   id: string;
@@ -562,6 +564,38 @@ export async function getFaculty() {
       .orderBy(asc(facultyProfile.orderIndex), asc(facultyProfile.name))
       .then((rows) => rows.map((r) => ({ ...r, photo: r.photo?.id ? r.photo : null }))),
   );
+}
+
+export async function getTeamMembers() {
+  return cached("team:all", [PUBLIC_CONTENT_TAG], 60_000, async () => {
+    try {
+      return await db
+      .select({
+        id: teamMember.id,
+        name: teamMember.name,
+        role: teamMember.role,
+        group: teamMember.group,
+        bio: teamMember.bio,
+        email: teamMember.email,
+        phone: teamMember.phone,
+        photo: {
+          id: mediaAsset.id,
+          alt: mediaAsset.alt,
+          width: mediaAsset.width,
+          height: mediaAsset.height,
+        },
+      })
+      .from(teamMember)
+      .leftJoin(mediaAsset, eq(mediaAsset.id, teamMember.photoId))
+      .where(eq(teamMember.isActive, true))
+      .orderBy(asc(teamMember.group), asc(teamMember.orderIndex), asc(teamMember.name))
+        .then((rows) => rows.map((row) => ({ ...row, photo: row.photo?.id ? row.photo : null })));
+    } catch (error) {
+      // Keep the team page available during the deployment that adds its CMS table.
+      console.error("Failed to load team profiles", error);
+      return defaultTeam.map((member, index) => ({ ...member, id: `default-${index}`, photo: null }));
+    }
+  });
 }
 
 export async function getAcademicPages() {

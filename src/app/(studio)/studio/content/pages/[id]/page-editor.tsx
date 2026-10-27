@@ -68,6 +68,7 @@ export function PageEditor({
       </div>
       <div>
         <p className="label">Body</p>
+        <p className="mb-1 text-xs text-muted">Use the image or video toolbar button after uploading media in the Media library. Published updates appear immediately.</p>
         <RichTextEditor initialHtml={initial.bodyHtml} onChange={setBodyHtml} label="Page body" />
       </div>
       <label className="flex items-center gap-2 text-sm">

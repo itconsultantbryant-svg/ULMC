@@ -70,6 +70,7 @@ export default async function StudioLayout({ children }: { children: React.React
   if (can(user, "institutional.manage")) {
     nav.push({ href: "/studio/academics", label: "Academics", icon: "content", group: "Manage" });
     nav.push({ href: "/studio/faculty", label: "Faculty", icon: "users", group: "Manage" });
+    nav.push({ href: "/studio/team", label: "Leadership & team", icon: "users", group: "Manage" });
   }
   if (can(user, "homepage.manage") || can(user, "institutional.manage")) {
     nav.push({ href: "/studio/content", label: "Department content", icon: "content", group: "Manage" });

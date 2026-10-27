@@ -1,0 +1,5 @@
+import { notFound } from "next/navigation";
+import { requirePagePermission } from "@/server/session";
+import { getTeamMemberById, listMediaAssets } from "@/server/studio/queries";
+import { TeamForm } from "../team-form";
+export default async function EditTeamMemberPage({ params }: { params: Promise<{ id: string }> }) { const { id } = await params; const { user } = await requirePagePermission("institutional.manage", `/studio/team/${id}`); const [member, media] = await Promise.all([getTeamMemberById(id), listMediaAssets(user)]); if (!member) notFound(); return <div className="mx-auto max-w-3xl space-y-6"><header><p className="kicker">Team</p><h1 className="mt-1 text-2xl">Edit team member</h1></header><TeamForm mediaOptions={media.map((m) => ({ id: m.id, originalName: m.originalName, alt: m.alt }))} initial={{ id: member.id, name: member.name, role: member.role, group: member.group, bio: member.bio, photoId: member.photoId, email: member.email ?? "", phone: member.phone ?? "", orderIndex: member.orderIndex, isActive: member.isActive }} /></div>; }

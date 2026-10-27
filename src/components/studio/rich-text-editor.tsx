@@ -5,6 +5,7 @@ import {
   Bold,
   Heading2,
   Heading3,
+  ImagePlus,
   Italic,
   Link2,
   List,
@@ -13,6 +14,7 @@ import {
   Redo2,
   RemoveFormatting,
   Undo2,
+  Video,
 } from "lucide-react";
 
 type Command = {
@@ -60,6 +62,19 @@ export function RichTextEditor({
     exec("createLink", url);
   }
 
+  function addMedia(type: "image" | "video") {
+    if (disabled) return;
+    const url = window.prompt(`Paste the ${type} URL or a Media Library path (/media/…)`);
+    if (!url) return;
+    const valid = /^https:\/\//i.test(url) || /^\/media\/[a-z0-9-]+$/i.test(url);
+    if (!valid) {
+      window.alert("Use an https:// URL or a /media/<asset-id> path from the Media Library.");
+      return;
+    }
+    const html = type === "image" ? `<img src="${url}" alt="" />` : `<video controls src="${url}"></video>`;
+    exec("insertHTML", html);
+  }
+
   const commands: Command[] = [
     { label: "Bold", icon: Bold, run: () => exec("bold") },
     { label: "Italic", icon: Italic, run: () => exec("italic") },
@@ -69,6 +84,8 @@ export function RichTextEditor({
     { label: "Numbered list", icon: ListOrdered, run: () => exec("insertOrderedList") },
     { label: "Quote", icon: Quote, run: () => exec("formatBlock", "<blockquote>") },
     { label: "Link", icon: Link2, run: addLink },
+    { label: "Insert image", icon: ImagePlus, run: () => addMedia("image") },
+    { label: "Insert video", icon: Video, run: () => addMedia("video") },
     { label: "Clear formatting", icon: RemoveFormatting, run: () => exec("removeFormat") },
     { label: "Undo", icon: Undo2, run: () => exec("undo") },
     { label: "Redo", icon: Redo2, run: () => exec("redo") },

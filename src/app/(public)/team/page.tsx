@@ -2,7 +2,8 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { PageHeader } from "@/components/ui/page-header";
 import { Breadcrumbs } from "@/components/ui/breadcrumbs";
-import { departmentContact, team, teamGroups } from "@/content/team";
+import { departmentContact, teamGroups } from "@/content/team";
+import { getTeamMembers } from "@/server/public-queries";
 
 export const metadata: Metadata = {
   title: "Leadership and team",
@@ -19,7 +20,8 @@ function initials(name: string) {
     .join("");
 }
 
-export default function TeamPage() {
+export default async function TeamPage() {
+  const team = await getTeamMembers();
   return (
     <>
       <PageHeader
@@ -48,12 +50,19 @@ export default function TeamPage() {
                       className="flex flex-col gap-4 rounded-lg border border-line bg-white p-5 shadow-soft"
                     >
                       <div className="flex items-center gap-4">
-                        <div
-                          className="flex h-16 w-16 flex-none items-center justify-center rounded-full bg-navy-tint font-serif text-xl text-navy"
-                          aria-hidden="true"
-                        >
-                          {initials(member.name)}
-                        </div>
+                        {member.photo ? (
+                          <img
+                            src={`/media/${member.photo.id}`}
+                            alt={member.photo.alt || `Portrait of ${member.name}`}
+                            width={member.photo.width ?? 160}
+                            height={member.photo.height ?? 160}
+                            className="h-16 w-16 flex-none rounded-full object-cover"
+                          />
+                        ) : (
+                          <div className="flex h-16 w-16 flex-none items-center justify-center rounded-full bg-navy-tint font-serif text-xl text-navy" aria-hidden="true">
+                            {initials(member.name)}
+                          </div>
+                        )}
                         <div className="min-w-0">
                           <h3 className="font-serif text-xl leading-tight text-navy">{member.name}</h3>
                           <p className="text-sm font-semibold text-red">{member.role}</p>

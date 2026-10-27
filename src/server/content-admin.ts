@@ -1,6 +1,7 @@
 import { and, eq, ne } from "drizzle-orm";
 import { db } from "@/server/db/client";
-import { announcement, auditLog, category, sitePage, tag } from "@/server/db/schema";
+import { announcement, auditLog, category, sitePage, tag, teamMember } from "@/server/db/schema";
+import { invalidatePublicContent } from "@/server/cache";
 import { HttpError } from "@/server/http";
 import { slugify } from "@/server/ids";
 import { can } from "@/server/permissions";
@@ -66,6 +67,40 @@ export async function updateSitePage(actor: StaffUser, id: string, input: Record
     entityId: id,
     metadata: { title },
   });
+}
+
+export async function saveTeamMember(actor: StaffUser, id: string | null, input: Record<string, unknown>) {
+  if (!can(actor, "institutional.manage")) throw new HttpError(403, "You cannot manage team profiles.");
+  const name = str(input.name, 160);
+  const role = str(input.role, 200);
+  if (name.length < 2 || role.length < 2) throw new HttpError(400, "Enter a name and role.");
+  const group = ["leadership", "editorial", "advisory"].includes(String(input.group)) ? String(input.group) : "editorial";
+  const photoId = typeof input.photoId === "string" && /^[0-9a-f-]{36}$/i.test(input.photoId) ? input.photoId : null;
+  const values = {
+    name,
+    role,
+    group,
+    bio: sanitizePlainText(str(input.bio, 8_000)),
+    photoId,
+    email: str(input.email, 200) || null,
+    phone: str(input.phone, 60) || null,
+    orderIndex: Number.isFinite(Number(input.orderIndex)) ? Number(input.orderIndex) : 0,
+    isActive: bool(input.isActive, true),
+    updatedAt: new Date(),
+  };
+  if (id) {
+    const [existing] = await db.select({ id: teamMember.id }).from(teamMember).where(eq(teamMember.id, id)).limit(1);
+    if (!existing) throw new HttpError(404, "Team profile not found.");
+    await db.update(teamMember).set(values).where(eq(teamMember.id, id));
+    await db.insert(auditLog).values({ actorId: actor.id, action: "team_member.updated", entityType: "team_member", entityId: id, metadata: { name } });
+    await invalidatePublicContent(["/team"]);
+    return { id };
+  }
+  const [created] = await db.insert(teamMember).values(values).returning({ id: teamMember.id });
+  if (!created) throw new HttpError(500, "Could not create team profile.");
+  await db.insert(auditLog).values({ actorId: actor.id, action: "team_member.created", entityType: "team_member", entityId: created.id, metadata: { name } });
+  await invalidatePublicContent(["/team"]);
+  return created;
 }
 
 export async function saveAnnouncement(actor: StaffUser, id: string | null, input: Record<string, unknown>) {

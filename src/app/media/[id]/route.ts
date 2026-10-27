@@ -29,6 +29,12 @@ export async function GET(request: Request, { params }: { params: Promise<{ id: 
     if (!context) return new Response("Not found", { status: 404 });
   }
 
+  if (asset.storageDriver === "static") {
+    if (!/^[a-z0-9][a-z0-9-]*\.(?:png|jpe?g|webp|avif)$/i.test(asset.storageKey)) {
+      return new Response("Invalid media key", { status: 500 });
+    }
+    return Response.redirect(new URL(`/news-images/${asset.storageKey}`, request.url), 307);
+  }
   if (asset.storageDriver !== "local") {
     return new Response("Storage driver not configured", { status: 501 });
   }

@@ -49,6 +49,7 @@ export const PERMISSIONS = [
   "settings.security",
   "audit.view",
   "notifications.manage",
+  "submissions.manage",
 ] as const;
 export type Permission = (typeof PERMISSIONS)[number];
 
@@ -100,6 +101,7 @@ const ADMIN: Permission[] = [
   "settings.manage",
   "audit.view",
   "notifications.manage",
+  "submissions.manage",
 ];
 
 const SUPER_ADMIN: Permission[] = [

@@ -1,5 +1,5 @@
 import { and, asc, desc, eq, inArray, isNull, sql, type SQL } from "drizzle-orm";
-import { academicPage, facultyProfile, teamMember } from "@/server/db/schema";
+import { academicPage, contactMessage, facultyProfile, newsletterSubscriber, teamMember } from "@/server/db/schema";
 import { alias } from "drizzle-orm/pg-core";
 import { db } from "@/server/db/client";
 import {
@@ -84,6 +84,7 @@ export type StudioCounts = {
   review: number;
   approvals: number;
   pendingComments: number;
+  pendingSubmissions: number;
   scheduled: number;
   unread: number;
 };
@@ -93,6 +94,7 @@ export async function getStudioCounts(user: StaffUser): Promise<StudioCounts> {
   const canSeeReview = can(user, "editorial.viewQueue");
   const canSeeApprovals = can(user, "admin.viewApprovalQueue");
   const canSeeComments = can(user, "comments.moderate");
+  const canSeeSubmissions = can(user, "submissions.manage");
 
   const [drafts] = await db
     .select({ total: sql<number>`count(*)::int` })
@@ -130,6 +132,13 @@ export async function getStudioCounts(user: StaffUser): Promise<StudioCounts> {
     .from(article)
     .where(and(eq(article.workflowStatus, "scheduled"), scope ?? sql`true`));
 
+  const [pendingSubmissions] = canSeeSubmissions
+    ? await db
+        .select({ total: sql<number>`count(*)::int` })
+        .from(contactMessage)
+        .where(eq(contactMessage.status, "new"))
+    : [{ total: 0 }];
+
   const unread = await getUnreadNotificationCount(user.id);
 
   return {
@@ -137,9 +146,28 @@ export async function getStudioCounts(user: StaffUser): Promise<StudioCounts> {
     review: review?.total ?? 0,
     approvals: approvals?.total ?? 0,
     pendingComments: pendingComments?.total ?? 0,
+    pendingSubmissions: pendingSubmissions?.total ?? 0,
     scheduled: scheduled?.total ?? 0,
     unread,
   };
+}
+
+export async function listContactMessages(status = "new") {
+  return db
+    .select()
+    .from(contactMessage)
+    .where(status === "all" ? undefined : eq(contactMessage.status, status))
+    .orderBy(desc(contactMessage.createdAt))
+    .limit(100);
+}
+
+export async function listNewsletterSubscribers(status = "all") {
+  return db
+    .select()
+    .from(newsletterSubscriber)
+    .where(status === "all" ? undefined : eq(newsletterSubscriber.status, status))
+    .orderBy(desc(newsletterSubscriber.createdAt))
+    .limit(100);
 }
 
 export type StudioArticleFilters = {

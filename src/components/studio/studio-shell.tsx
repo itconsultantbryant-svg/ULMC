@@ -43,6 +43,7 @@ const ICONS: Record<string, React.ComponentType<{ className?: string; "aria-hidd
   review: ClipboardCheck,
   approvals: ShieldCheck,
   comments: MessageSquare,
+  submissions: MessageSquare,
   media: Images,
   analytics: BarChart3,
   users: Users,

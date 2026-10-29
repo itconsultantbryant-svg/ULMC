@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { ArrowRight, ClipboardCheck, FileText, ShieldCheck, MessageSquare } from "lucide-react";
+import { ArrowRight, ClipboardCheck, FileText, ShieldCheck, MessageSquare, Send } from "lucide-react";
 import { StatusBadge } from "@/components/ui/badge";
 import { relativeTime } from "@/lib/format";
 import { can } from "@/server/permissions";
@@ -54,6 +54,13 @@ export default async function StudioDashboard() {
       href: "/studio/comments",
       icon: MessageSquare,
       hide: !can(user, "comments.moderate"),
+    },
+    {
+      label: "New website enquiries",
+      value: counts.pendingSubmissions,
+      href: "/studio/submissions",
+      icon: Send,
+      hide: !can(user, "submissions.manage"),
     },
   ].filter((stat) => !stat.hide);
 

@@ -6,6 +6,9 @@ import { clientIp, hashIp, isLikelyBot } from "@/server/ids";
 import { rateLimit, tooManyRequests } from "@/server/rate-limit";
 import { sendMail } from "@/server/email";
 import { readSiteSettings } from "@/server/settings";
+import { notifyUsers } from "@/server/notifications";
+import { user } from "@/server/db/schema";
+import { and, eq, inArray, like, or } from "drizzle-orm";
 
 const schema = z.object({
   name: z.string().trim().min(2).max(120),
@@ -35,14 +38,35 @@ export async function POST(request: Request) {
     }
 
     const settings = await readSiteSettings();
-    await db.insert(contactMessage).values({
+    const [message] = await db.insert(contactMessage).values({
       name: parsed.data.name,
       email: parsed.data.email.toLowerCase(),
       subject: parsed.data.subject,
       body: parsed.data.body,
       ipHash: hashIp(ip),
       userAgent: userAgent?.slice(0, 300) ?? null,
-    });
+    }).returning({ id: contactMessage.id });
+
+    const administrators = await db
+      .select({ id: user.id })
+      .from(user)
+      .where(
+        and(
+          eq(user.banned, false),
+          or(
+            inArray(user.role, ["admin", "super_admin"]),
+            like(user.role, "%admin%"),
+          ),
+        ),
+      );
+    await notifyUsers(db, {
+      userIds: administrators.map((administrator) => administrator.id),
+      type: "contact.new",
+      title: "New website enquiry",
+      body: `${parsed.data.name} sent a ${parsed.data.subject} enquiry.`,
+      link: "/studio/submissions",
+      dedupeKey: `contact:${message.id}`,
+    }).catch((error) => console.error("Failed to notify administrators", error));
 
     if (settings.contactEmail) {
       sendMail({

@@ -37,7 +37,7 @@ export async function subscribeToNewsletter(
 
   const confirmUrl = `${env.siteUrl}/newsletter/confirm?token=${encodeURIComponent(token)}`;
   const unsub = `${env.siteUrl}/newsletter`;
-  await sendMail({
+  void sendMail({
     to: normalized,
     subject: "Confirm your department newsletter subscription",
     text: [
@@ -51,7 +51,7 @@ export async function subscribeToNewsletter(
       "",
       `Privacy notice: ${unsub}`,
     ].join("\n"),
-  });
+  }).catch((error) => console.error("Newsletter confirmation email failed", error));
 
   return { ok: true };
 }

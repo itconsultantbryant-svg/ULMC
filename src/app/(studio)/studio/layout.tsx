@@ -57,6 +57,9 @@ export default async function StudioLayout({ children }: { children: React.React
       group: "Manage",
     });
   }
+  if (can(user, "submissions.manage")) {
+    nav.push({ href: "/studio/submissions", label: "Submissions", icon: "submissions", badge: counts.pendingSubmissions, group: "Manage" });
+  }
   if (can(user, "media.upload")) {
     nav.push({ href: "/studio/media", label: "Media", icon: "media", group: "Create" });
   }

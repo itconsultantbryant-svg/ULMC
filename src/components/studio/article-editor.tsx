@@ -86,7 +86,8 @@ type DialogKind =
   | "schedule"
   | "unpublish"
   | "archive"
-  | "publish";
+  | "publish"
+  | "publish_direct";
 
 const EDITABLE_STATUSES = new Set(["draft", "changes_requested"]);
 
@@ -253,8 +254,8 @@ export function ArticleEditor({
   }, [canEdit, save]);
 
   async function runAction(action: string, extra: Record<string, unknown> = {}) {
-    if (action === "submit" && dirty) {
-      setActionError("Save your changes before submitting for review.");
+    if ((action === "submit" || action === "publish_direct") && dirty) {
+      setActionError("Save your changes before publishing or submitting.");
       return false;
     }
     setBusy(true);
@@ -299,6 +300,9 @@ export function ArticleEditor({
   const primaryActions: { label: string; kind: DialogKind; tone?: "primary" | "outline" }[] = [];
   if (canEdit && (status === "draft" || status === "changes_requested") && permissions.canSubmit) {
     primaryActions.push({ label: "Submit for review", kind: "submit" });
+  }
+  if (canEdit && (status === "draft" || status === "changes_requested") && permissions.canPublish) {
+    primaryActions.unshift({ label: "Publish live", kind: "publish_direct" });
   }
   if ((status === "submitted" || status === "resubmitted") && permissions.canReview) {
     primaryActions.push({ label: "Start editorial review", kind: "submit" });
@@ -883,6 +887,7 @@ export function ArticleEditor({
               unpublish: "unpublish",
               archive: "archive",
               publish: "publish",
+              publish_direct: "publish_direct",
             };
             return runAction(mapping[dialog], extra);
           }}
@@ -926,6 +931,7 @@ function ActionDialog({
     unpublish: "Unpublish story",
     archive: "Archive story",
     publish: "Publish now",
+    publish_direct: "Publish live now",
   };
 
   const allChecked = CHECKLIST.every((item) => checked[item.key]);
@@ -976,6 +982,13 @@ function ActionDialog({
             <p className="text-sm leading-relaxed text-muted">
               This will make the story public immediately. The publication is recorded with your
               account and the current revision.
+            </p>
+          ) : null}
+          {kind === "publish_direct" ? (
+            <p className="text-sm leading-relaxed text-muted">
+              This will immediately publish the current draft without sending it through editorial or
+              final approval. Confirm that the category, content, featured media, captions and credits
+              are complete.
             </p>
           ) : null}
           {kind === "archive" ? (

@@ -8,6 +8,7 @@ import {
   cancelSchedule,
   editorialApprove,
   publishNow,
+  publishDirectly,
   rejectArticle,
   requestChanges,
   schedulePublication,
@@ -100,6 +101,10 @@ export async function POST(request: Request, context: { params: Promise<{ id: st
       case "publish": {
         if (!revisionId) throw new HttpError(400, "Missing revision.");
         return Response.json(await publishNow(user.id, { articleId: id, revisionId, ipHash }));
+      }
+      case "publish_direct": {
+        if (!revisionId) throw new HttpError(400, "Missing revision.");
+        return Response.json(await publishDirectly(user.id, { articleId: id, revisionId, ipHash }));
       }
       case "schedule": {
         if (!revisionId) throw new HttpError(400, "Missing revision.");

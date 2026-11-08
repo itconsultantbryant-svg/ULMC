@@ -95,6 +95,7 @@ export type TransitionRule = {
  * source of truth for which edges exist.
  */
 export const TRANSITIONS: TransitionRule[] = [
+  { from: "draft", to: "published", allowedRoles: ["admin", "super_admin"], description: "Publish directly" },
   { from: "draft", to: "submitted", allowedRoles: ["staff", "editor", "admin", "super_admin"], description: "Submit for editorial review" },
   { from: "draft", to: "archived", allowedRoles: ["staff", "editor", "admin", "super_admin"], description: "Archive draft" },
   { from: "submitted", to: "in_review", allowedRoles: ["editor", "admin", "super_admin"], description: "Begin editorial review" },
@@ -104,6 +105,7 @@ export const TRANSITIONS: TransitionRule[] = [
   { from: "in_review", to: "editorially_approved", allowedRoles: ["editor", "admin", "super_admin"], description: "Approve editorial review and send to administrator" },
   { from: "in_review", to: "rejected", allowedRoles: ["editor", "admin", "super_admin"], requiresReason: true, description: "Reject during review" },
   { from: "changes_requested", to: "resubmitted", allowedRoles: ["staff", "editor", "admin", "super_admin"], description: "Resubmit revised story" },
+  { from: "changes_requested", to: "published", allowedRoles: ["admin", "super_admin"], description: "Publish directly" },
   { from: "changes_requested", to: "archived", allowedRoles: ["staff", "editor", "admin", "super_admin"], description: "Archive returned story" },
   { from: "resubmitted", to: "in_review", allowedRoles: ["editor", "admin", "super_admin"], description: "Resume editorial review" },
   { from: "resubmitted", to: "changes_requested", allowedRoles: ["editor", "admin", "super_admin"], requiresReason: true, description: "Request further changes" },

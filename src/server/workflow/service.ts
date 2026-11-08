@@ -1455,6 +1455,7 @@ async function performPublish(
     revision: typeof articleRevision.$inferSelect;
     actorId: string | null;
     scheduleId?: string | null;
+    skipApprovalCheck?: boolean;
     action: string;
     ipHash?: string | null;
   },
@@ -1482,7 +1483,7 @@ async function performPublish(
     }
   }
 
-  await assertPublishable(tx, opts.revision);
+  if (!opts.skipApprovalCheck) await assertPublishable(tx, opts.revision);
 
   const authors = await getRevisionAuthorIds(tx, opts.revision.id);
   let slug = opts.articleRow.slug;
@@ -1628,6 +1629,55 @@ export async function publishNow(
       ipHash: params.ipHash,
     });
     return published;
+  });
+
+  await invalidatePublicContent([`/news/${result.slug}`, `/authors`]);
+  if (!result.already) {
+    await notifyNow(PUBLIC_EVENTS_CHANNEL, {
+      eventId: `pub_${result.publicationId}`,
+      type: "article.published",
+      articleId: params.articleId,
+      revisionId: result.revisionId,
+      slug: result.slug,
+      at: new Date().toISOString(),
+    });
+  }
+  return result;
+}
+
+/** Publish an administrator's completed draft immediately, without review queues. */
+export async function publishDirectly(
+  actorId: string,
+  params: { articleId: string; revisionId: string; ipHash?: string | null },
+): Promise<PublishResult> {
+  const result = await db.transaction(async (tx) => {
+    const actor = await requireActor(tx, actorId, "article.publish");
+    const articleRow = await getArticleForUpdate(tx, params.articleId);
+    if (!["draft", "changes_requested"].includes(articleRow.workflowStatus)) {
+      throw new WorkflowError("invalid_transition", "Only an editable draft can be published directly.");
+    }
+    if (articleRow.workingRevisionId !== params.revisionId) {
+      throw new WorkflowError("conflict", "A newer revision is active. Reload before publishing.");
+    }
+    const revision = await getRevision(tx, params.revisionId);
+    const authors = await getRevisionAuthorIds(tx, revision.id);
+    if (!authors.includes(actor.id) && !can(actor, "article.editAny")) {
+      throw new WorkflowError("forbidden", "You can only publish stories you can edit.");
+    }
+    await verifyRevisionComplete(tx, revision);
+    const now = new Date();
+    await tx
+      .update(articleRevision)
+      .set({ lockedAt: now, version: revision.version + 1 })
+      .where(eq(articleRevision.id, revision.id));
+    return performPublish(tx, {
+      articleRow,
+      revision: { ...revision, lockedAt: now, version: revision.version + 1 },
+      actorId: actor.id,
+      action: "article.published_directly",
+      ipHash: params.ipHash,
+      skipApprovalCheck: true,
+    });
   });
 
   await invalidatePublicContent([`/news/${result.slug}`, `/authors`]);

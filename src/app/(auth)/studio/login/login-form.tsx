@@ -34,13 +34,8 @@ export function LoginForm({ next }: { next: string }) {
         setSubmitting(false);
         return;
       }
-      const data = result.data as { twoFactorRedirect?: boolean } | null;
       const target = safeNext(next);
-      if (data?.twoFactorRedirect) {
-        router.push(`/studio/two-factor?next=${encodeURIComponent(target)}`);
-      } else {
-        router.push(target);
-      }
+      router.push(target);
       router.refresh();
     } catch {
       setError("Network error. Please try again.");
@@ -100,8 +95,8 @@ export function LoginForm({ next }: { next: string }) {
         {submitting ? "Signing in…" : "Sign in"}
       </button>
       <p className="text-xs leading-relaxed text-muted">
-        Privileged accounts require two-factor authentication. Sessions end automatically after 8
-        hours of inactivity.
+        Sign in with your email address and password. Sessions end automatically after 8 hours of
+        inactivity.
       </p>
     </form>
   );

@@ -17,6 +17,7 @@
     "db:pg:start": "pg_ctl -D .pgdata -o \"-p 5433 -k /tmp\" -l .pgdata/server.log start || true",
     "db:pg:stop": "pg_ctl -D .pgdata stop || true",
     "setup": "tsx --env-file=.env scripts/setup.ts",
+    "admin:create": "tsx scripts/create-admin.ts",
     "test": "vitest run",
     "test:watch": "vitest",
     "test:e2e": "playwright test",

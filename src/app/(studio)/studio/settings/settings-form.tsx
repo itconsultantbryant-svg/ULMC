@@ -121,13 +121,6 @@ export function SettingsForm({ initial }: { initial: SiteSettings }) {
         <h2 className="text-lg">Editorial and security policy</h2>
         <div className="mt-4 space-y-3 text-sm">
           <label className="flex items-start gap-3">
-            <input type="checkbox" className="mt-1" checked={form.requireMfaForPrivileged} onChange={(e) => set("requireMfaForPrivileged", e.target.checked)} />
-            <span>
-              <span className="font-semibold">Require two-factor for editors and administrators.</span>
-              <span className="block text-xs text-muted">Privileged accounts are sent to security setup before they can use the studio.</span>
-            </span>
-          </label>
-          <label className="flex items-start gap-3">
             <input type="checkbox" className="mt-1" checked={form.newsletterEnabled} onChange={(e) => set("newsletterEnabled", e.target.checked)} />
             <span>
               <span className="font-semibold">Enable newsletter sign-up.</span>

@@ -67,7 +67,6 @@ export default async function UsersPage({
               <tr>
                 <th scope="col">Name</th>
                 <th scope="col">Role</th>
-                <th scope="col">2FA</th>
                 <th scope="col">Status</th>
                 <th scope="col">Added</th>
                 <th scope="col" className="text-right">
@@ -85,11 +84,6 @@ export default async function UsersPage({
                   </td>
                   <td className="whitespace-nowrap text-xs">{roleLabel(member.role)}</td>
                   <td className="whitespace-nowrap text-xs">
-                    <span className={member.twoFactorEnabled ? "text-success" : "text-warning"}>
-                      {member.twoFactorEnabled ? "Enabled" : "None"}
-                    </span>
-                  </td>
-                  <td className="whitespace-nowrap text-xs">
                     {member.banned ? (
                       <span className="font-semibold text-red-deep">Suspended</span>
                     ) : (
@@ -101,6 +95,9 @@ export default async function UsersPage({
                     <UserActions
                       id={member.id}
                       role={member.role}
+                      name={member.name}
+                      title={member.title}
+                      slug={member.slug}
                       banned={member.banned}
                       isSelf={member.id === user.id}
                       canManageRoles={canManageRoles}

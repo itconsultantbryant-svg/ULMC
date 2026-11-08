@@ -42,7 +42,7 @@ export const DEFAULT_SETTINGS: SiteSettings = {
   contactEmail: "masscommdept@ul.edu.lr",
   contactPhone: "+231 777 463 864",
   address: "MassComm Building, Fendell Campus, Louisiana, Montserrado, Liberia",
-  requireMfaForPrivileged: true,
+  requireMfaForPrivileged: false,
   commentsDefaultEnabled: true,
   commentsAutoCloseDays: 30,
   newsletterEnabled: true,

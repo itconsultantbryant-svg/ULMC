@@ -1,7 +1,6 @@
 import { betterAuth } from "better-auth";
 import { drizzleAdapter } from "better-auth/adapters/drizzle";
 import { nextCookies } from "better-auth/next-js";
-import { twoFactor } from "better-auth/plugins";
 import { eq } from "drizzle-orm";
 import { env } from "@/lib/env";
 import { db, schema } from "@/server/db/client";
@@ -62,7 +61,6 @@ export const auth = betterAuth({
       "/sign-in/email": { window: 60, max: 10 },
       "/sign-up/email": { window: 60, max: 5 },
       "/forget-password": { window: 300, max: 5 },
-      "/two-factor/verify-totp": { window: 60, max: 10 },
     },
   },
   advanced: {
@@ -73,13 +71,7 @@ export const auth = betterAuth({
       secure: env.isProd,
     },
   },
-  plugins: [
-    twoFactor({
-      issuer: "The Varsity Pilot Editorial",
-      allowPasswordless: false,
-    }),
-    nextCookies(),
-  ],
+  plugins: [nextCookies()],
   databaseHooks: {
     user: {
       create: {

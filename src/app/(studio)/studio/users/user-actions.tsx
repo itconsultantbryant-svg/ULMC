@@ -6,6 +6,9 @@ import { useRouter } from "next/navigation";
 export function UserActions({
   id,
   role,
+  name,
+  title,
+  slug,
   banned,
   isSelf,
   canManageRoles,
@@ -13,6 +16,9 @@ export function UserActions({
 }: {
   id: string;
   role: string;
+  name: string;
+  title: string | null;
+  slug: string | null;
   banned: boolean;
   isSelf: boolean;
   canManageRoles: boolean;
@@ -57,6 +63,22 @@ export function UserActions({
           Role
         </label>
       ) : null}
+      <button
+        type="button"
+        onClick={() => {
+          const nextName = window.prompt("Name", name);
+          if (nextName === null) return;
+          const nextTitle = window.prompt("Title (optional)", title ?? "");
+          if (nextTitle === null) return;
+          const nextSlug = window.prompt("Public profile slug", slug ?? "");
+          if (nextSlug === null) return;
+          void patch({ name: nextName, title: nextTitle, slug: nextSlug });
+        }}
+        disabled={busy}
+        className="rounded border border-line px-2 py-1 text-xs font-semibold text-ink hover:bg-mist disabled:opacity-50"
+      >
+        Edit
+      </button>
       {canManageRoles ? (
         <select
           id={`role-${id}`}
@@ -71,14 +93,6 @@ export function UserActions({
           <option value="super_admin">Super admin</option>
         </select>
       ) : null}
-      <button
-        type="button"
-        onClick={() => void patch({ action: "mfa_reset" }, "Reset two-factor authentication for this account?")}
-        disabled={busy}
-        className="rounded border border-line px-2 py-1 text-xs font-semibold text-ink hover:bg-mist disabled:opacity-50"
-      >
-        Reset MFA
-      </button>
       {banned ? (
         <button
           type="button"
@@ -102,6 +116,14 @@ export function UserActions({
           Suspend
         </button>
       )}
+      <button
+        type="button"
+        onClick={() => void patch({ action: "delete" }, "Delete this account? It will immediately lose access and its personal sign-in data will be removed.")}
+        disabled={busy}
+        className="rounded border border-red/30 px-2 py-1 text-xs font-semibold text-red-deep hover:bg-red-tint disabled:opacity-50"
+      >
+        Delete
+      </button>
       {error ? <span className="w-full text-right text-[11px] text-red-deep">{error}</span> : null}
     </div>
   );

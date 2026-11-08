@@ -1,6 +1,6 @@
 import { and, eq, isNull, sql } from "drizzle-orm";
 import { db } from "@/server/db/client";
-import { auditLog, invitation, session, twoFactor, user } from "@/server/db/schema";
+import { account, auditLog, invitation, session, twoFactor, user } from "@/server/db/schema";
 import { HttpError } from "@/server/http";
 import { randomToken, sha256, slugify } from "@/server/ids";
 import { can, ROLES, type Role } from "@/server/permissions";
@@ -237,5 +237,56 @@ export async function resetUserMfa(actor: StaffUser, targetId: string): Promise<
     entityType: "user",
     entityId: targetId,
     metadata: {},
+  });
+}
+
+/**
+ * Remove access and personal account credentials while retaining authored content
+ * and audit records whose foreign keys reference this user.
+ */
+export async function deleteUserByAdmin(actor: StaffUser, targetId: string): Promise<void> {
+  if (!can(actor, "users.manage")) throw new HttpError(403, "You cannot delete users.");
+  const [target] = await db.select().from(user).where(eq(user.id, targetId)).limit(1);
+  if (!target) throw new HttpError(404, "User not found.");
+  if (target.id === actor.id) throw new HttpError(400, "You cannot delete your own account.");
+  if (target.role.includes("admin") && !can(actor, "roles.manage")) {
+    throw new HttpError(403, "Only a super administrator can delete an administrator.");
+  }
+  if (target.role.includes("super_admin")) {
+    const [count] = await db
+      .select({ total: sql<number>`count(*)::int` })
+      .from(user)
+      .where(sql`${user.role} LIKE '%super_admin%' AND ${user.banned} = false`);
+    if ((count?.total ?? 0) <= 1) throw new HttpError(400, "The last active super administrator cannot be deleted.");
+  }
+
+  await db.transaction(async (tx) => {
+    await tx.delete(session).where(eq(session.userId, targetId));
+    await tx.delete(account).where(eq(account.userId, targetId));
+    await tx.delete(twoFactor).where(eq(twoFactor.userId, targetId));
+    await tx
+      .update(user)
+      .set({
+        name: "Deleted account",
+        email: `deleted+${targetId}@invalid.local`,
+        emailVerified: false,
+        image: null,
+        role: "staff",
+        banned: true,
+        banReason: "Account deleted by administrator",
+        twoFactorEnabled: false,
+        slug: null,
+        title: null,
+        bio: null,
+        updatedAt: new Date(),
+      })
+      .where(eq(user.id, targetId));
+    await tx.insert(auditLog).values({
+      actorId: actor.id,
+      action: "user.deleted",
+      entityType: "user",
+      entityId: targetId,
+      metadata: { deletedEmail: target.email },
+    });
   });
 }

@@ -1,6 +1,6 @@
 import { errorResponse, readJson } from "@/server/http";
 import { assertMfaCompliant, requireApiUser } from "@/server/session";
-import { resetUserMfa, updateUserByAdmin } from "@/server/users";
+import { deleteUserByAdmin, resetUserMfa, updateUserByAdmin } from "@/server/users";
 
 export async function PATCH(request: Request, context: { params: Promise<{ id: string }> }) {
   try {
@@ -8,6 +8,10 @@ export async function PATCH(request: Request, context: { params: Promise<{ id: s
     const { user } = await requireApiUser();
     await assertMfaCompliant(user);
     const body = (await readJson(request)) as Record<string, unknown>;
+    if (body.action === "delete") {
+      await deleteUserByAdmin(user, id);
+      return Response.json({ ok: true });
+    }
     if (body.action === "mfa_reset") {
       await resetUserMfa(user, id);
       return Response.json({ ok: true });

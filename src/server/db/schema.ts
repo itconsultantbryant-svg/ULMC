@@ -1,6 +1,7 @@
 import {
   bigint,
   boolean,
+  customType,
   date,
   index,
   integer,
@@ -14,6 +15,7 @@ import {
 } from "drizzle-orm/pg-core";
 
 const ts = (name: string) => timestamp(name, { withTimezone: true, mode: "date" });
+const bytea = customType<{ data: Buffer; driverData: Buffer }>({ dataType: () => "bytea" });
 
 // ---------------------------------------------------------------------------
 // Authentication (Better Auth)
@@ -162,6 +164,15 @@ export const mediaAsset = pgTable(
   },
   (t) => [index("media_created_idx").on(t.createdAt)],
 );
+
+/** Binary media for deployments that use Neon/PostgreSQL rather than object storage. */
+export const mediaBlob = pgTable("media_blob", {
+  assetId: uuid("asset_id")
+    .primaryKey()
+    .references(() => mediaAsset.id, { onDelete: "cascade" }),
+  data: bytea("data").notNull(),
+  createdAt: ts("created_at").notNull().defaultNow(),
+});
 
 // ---------------------------------------------------------------------------
 // Taxonomy

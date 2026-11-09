@@ -4,6 +4,9 @@ import path from "node:path";
 import { Readable } from "node:stream";
 import { GetObjectCommand } from "@aws-sdk/client-s3";
 import { env } from "@/lib/env";
+import { eq } from "drizzle-orm";
+import { db } from "@/server/db/client";
+import { mediaBlob } from "@/server/db/schema";
 import { getAuthContext } from "@/server/session";
 import { getMediaById, isMediaPublic, isSafeStorageKey, s3Client } from "@/server/media";
 
@@ -36,6 +39,37 @@ export async function GET(request: Request, { params }: { params: Promise<{ id: 
       return new Response("Invalid media key", { status: 500 });
     }
     return Response.redirect(new URL(`/news-images/${asset.storageKey}`, request.url), 307);
+  }
+  if (asset.storageDriver === "database") {
+    const [blob] = await db
+      .select({ data: mediaBlob.data })
+      .from(mediaBlob)
+      .where(eq(mediaBlob.assetId, asset.id))
+      .limit(1);
+    if (!blob) return new Response("Media file missing", { status: 404 });
+    const data = Buffer.from(blob.data);
+    const download = new URL(request.url).searchParams.get("download") === "1";
+    const headers = new Headers({
+      "content-type": asset.mimeType || "application/octet-stream",
+      "content-disposition": contentDisposition(asset.originalName ?? asset.storageKey, download),
+      "x-content-type-options": "nosniff",
+      "content-security-policy": "default-src 'none'; sandbox",
+      "accept-ranges": "bytes",
+      etag: `"${asset.checksum ?? data.length}"`,
+      "cache-control": publiclyVisible ? "public, max-age=31536000, immutable" : "private, no-store",
+    });
+    if (request.headers.get("if-none-match") === headers.get("etag")) return new Response(null, { status: 304, headers });
+    const match = /^bytes=(\d*)-(\d*)$/.exec(request.headers.get("range") ?? "");
+    if (match) {
+      const start = match[1] ? Number.parseInt(match[1], 10) : 0;
+      const end = Math.min(match[2] ? Number.parseInt(match[2], 10) : data.length - 1, data.length - 1);
+      if (start >= data.length || start > end) return new Response(null, { status: 416, headers: { "content-range": `bytes */${data.length}` } });
+      headers.set("content-range", `bytes ${start}-${end}/${data.length}`);
+      headers.set("content-length", String(end - start + 1));
+      return new Response(data.subarray(start, end + 1), { status: 206, headers });
+    }
+    headers.set("content-length", String(data.length));
+    return new Response(data, { headers });
   }
   if (asset.storageDriver === "s3") {
     if (!isSafeStorageKey(asset.storageKey)) return new Response("Invalid media key", { status: 500 });

@@ -64,7 +64,19 @@ export const env = {
     };
   },
   get storageDriver() {
-    return (process.env.STORAGE_DRIVER || "local") as "local" | "s3";
+    const driver = process.env.STORAGE_DRIVER?.toLowerCase();
+    if (driver === "local" || driver === "database") return driver;
+    // A legacy Vercel S3 setting without credentials must not block uploads.
+    // Fall back to the configured Neon database until S3 is fully configured.
+    if (
+      driver === "s3" &&
+      process.env.S3_BUCKET &&
+      process.env.S3_ACCESS_KEY_ID &&
+      process.env.S3_SECRET_ACCESS_KEY
+    ) {
+      return "s3";
+    }
+    return "database";
   },
   get s3() {
     return {

@@ -4,7 +4,7 @@ import path from "node:path";
 import sharp from "sharp";
 import { PutObjectCommand } from "@aws-sdk/client-s3";
 import { db } from "@/server/db/client";
-import { mediaAsset } from "@/server/db/schema";
+import { mediaAsset, mediaBlob } from "@/server/db/schema";
 import { HttpError } from "@/server/http";
 import { env } from "@/lib/env";
 import { assertS3Configured, s3Client } from "@/server/media";
@@ -87,7 +87,7 @@ export async function saveUploadedMedia(
       console.error("S3 media upload failed", error);
       throw new HttpError(502, "The media storage service could not save this file. Please try again.");
     }
-  } else {
+  } else if (env.storageDriver === "local") {
     await mkdir(MEDIA_DIR, { recursive: true });
     await writeFile(path.join(MEDIA_DIR, storageKey), buffer, { flag: "wx" });
   }
@@ -96,26 +96,33 @@ export async function saveUploadedMedia(
     .replace(/[\u0000-\u001f\u007f]/g, "")
     .slice(0, 200);
 
-  const [row] = await db
-    .insert(mediaAsset)
-    .values({
-      storageDriver: env.storageDriver,
-      storageKey,
-      originalName,
-      mimeType: file.type,
-      sizeBytes: file.size,
-      width,
-      height,
-      checksum,
-      alt: (fields.alt ?? "").trim().slice(0, 300),
-      caption: fields.caption?.trim() || null,
-      credit: fields.credit?.trim() || null,
-      rights: fields.rights?.trim() || null,
-      blurDataUrl,
-      isPrivate: true,
-      uploadedBy: actorId,
-    })
-    .returning({ id: mediaAsset.id, storageKey: mediaAsset.storageKey });
+  const row = await db.transaction(async (tx) => {
+    const [asset] = await tx
+      .insert(mediaAsset)
+      .values({
+        storageDriver: env.storageDriver,
+        storageKey,
+        originalName,
+        mimeType: file.type,
+        sizeBytes: file.size,
+        width,
+        height,
+        checksum,
+        alt: (fields.alt ?? "").trim().slice(0, 300),
+        caption: fields.caption?.trim() || null,
+        credit: fields.credit?.trim() || null,
+        rights: fields.rights?.trim() || null,
+        blurDataUrl,
+        isPrivate: true,
+        uploadedBy: actorId,
+      })
+      .returning({ id: mediaAsset.id, storageKey: mediaAsset.storageKey });
+    if (!asset) return null;
+    if (env.storageDriver === "database") {
+      await tx.insert(mediaBlob).values({ assetId: asset.id, data: buffer });
+    }
+    return asset;
+  });
 
   if (!row) throw new HttpError(500, "Could not record the uploaded file.");
   return row;

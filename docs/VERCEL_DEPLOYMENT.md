@@ -33,17 +33,14 @@ SMTP_PORT=587
 SMTP_SECURE=false
 SMTP_USER=<provider-user>
 SMTP_PASSWORD=<provider-password>
-STORAGE_DRIVER=s3
-S3_ENDPOINT=<S3-compatible-endpoint, e.g. https://<account-id>.r2.cloudflarestorage.com>
-S3_REGION=us-east-1
-S3_BUCKET=<production-media-bucket>
-S3_ACCESS_KEY_ID=<bucket-access-key>
-S3_SECRET_ACCESS_KEY=<bucket-secret>
-S3_FORCE_PATH_STYLE=false
-S3_PUBLIC_BASE_URL=<optional-public-cdn-url>
+STORAGE_DRIVER=database
 ANALYTICS_ACTIVE_WINDOW_MINUTES=5
 ANALYTICS_RETENTION_DAYS=180
 ```
+
+No `S3_*` variables are needed with `STORAGE_DRIVER=database`. Deployments that still have a
+legacy `STORAGE_DRIVER=s3` setting but no complete S3 credentials automatically fall back to Neon
+media storage after this release.
 
 ## Scheduled work on Vercel Hobby
 

@@ -2,8 +2,10 @@ import { createReadStream } from "node:fs";
 import { stat } from "node:fs/promises";
 import path from "node:path";
 import { Readable } from "node:stream";
+import { GetObjectCommand } from "@aws-sdk/client-s3";
+import { env } from "@/lib/env";
 import { getAuthContext } from "@/server/session";
-import { getMediaById, isMediaPublic, isSafeStorageKey } from "@/server/media";
+import { getMediaById, isMediaPublic, isSafeStorageKey, s3Client } from "@/server/media";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
@@ -34,6 +36,36 @@ export async function GET(request: Request, { params }: { params: Promise<{ id: 
       return new Response("Invalid media key", { status: 500 });
     }
     return Response.redirect(new URL(`/news-images/${asset.storageKey}`, request.url), 307);
+  }
+  if (asset.storageDriver === "s3") {
+    if (!isSafeStorageKey(asset.storageKey)) return new Response("Invalid media key", { status: 500 });
+    try {
+      const object = await s3Client().send(
+        new GetObjectCommand({
+          Bucket: env.s3.bucket,
+          Key: asset.storageKey,
+          Range: request.headers.get("range") ?? undefined,
+        }),
+      );
+      if (!object.Body) return new Response("Media file missing", { status: 404 });
+      const download = new URL(request.url).searchParams.get("download") === "1";
+      const headers = new Headers({
+        "content-type": object.ContentType || asset.mimeType || "application/octet-stream",
+        "content-disposition": contentDisposition(asset.originalName ?? asset.storageKey, download),
+        "x-content-type-options": "nosniff",
+        "content-security-policy": "default-src 'none'; sandbox",
+        "accept-ranges": "bytes",
+        "cache-control": publiclyVisible ? "public, max-age=31536000, immutable" : "private, no-store",
+      });
+      if (object.ContentLength != null) headers.set("content-length", String(object.ContentLength));
+      if (object.ETag) headers.set("etag", object.ETag);
+      if (object.LastModified) headers.set("last-modified", object.LastModified.toUTCString());
+      if (object.ContentRange) headers.set("content-range", object.ContentRange);
+      return new Response(object.Body.transformToWebStream(), { status: object.ContentRange ? 206 : 200, headers });
+    } catch (error) {
+      console.error("S3 media read failed", error);
+      return new Response("Media file unavailable", { status: 502 });
+    }
   }
   if (asset.storageDriver !== "local") {
     return new Response("Storage driver not configured", { status: 501 });

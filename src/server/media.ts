@@ -1,9 +1,31 @@
 import { and, eq, gte, isNotNull, isNull, lte, or, sql } from "drizzle-orm";
+import { S3Client } from "@aws-sdk/client-s3";
 import { db } from "@/server/db/client";
 import { advertisement, article, articleRevision, articleRevisionMedia, mediaAsset } from "@/server/db/schema";
 import { env } from "@/lib/env";
 
 export const MEDIA_ROOT = ".data/media";
+
+export function assertS3Configured() {
+  const { bucket, accessKeyId, secretAccessKey } = env.s3;
+  if (!bucket || !accessKeyId || !secretAccessKey) {
+    throw new Error("S3 media storage is selected but S3_BUCKET, S3_ACCESS_KEY_ID or S3_SECRET_ACCESS_KEY is missing.");
+  }
+}
+
+let client: S3Client | undefined;
+export function s3Client(): S3Client {
+  assertS3Configured();
+  if (!client) {
+    client = new S3Client({
+      endpoint: env.s3.endpoint,
+      region: env.s3.region,
+      credentials: { accessKeyId: env.s3.accessKeyId, secretAccessKey: env.s3.secretAccessKey },
+      forcePathStyle: env.s3.forcePathStyle,
+    });
+  }
+  return client;
+}
 
 export function isSafeStorageKey(key: string): boolean {
   return /^[A-Za-z0-9][A-Za-z0-9._-]*$/.test(key) && !key.includes("..");

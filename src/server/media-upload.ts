@@ -2,10 +2,12 @@ import { createHash, randomUUID } from "node:crypto";
 import { mkdir, writeFile } from "node:fs/promises";
 import path from "node:path";
 import sharp from "sharp";
+import { PutObjectCommand } from "@aws-sdk/client-s3";
 import { db } from "@/server/db/client";
 import { mediaAsset } from "@/server/db/schema";
 import { HttpError } from "@/server/http";
 import { env } from "@/lib/env";
+import { assertS3Configured, s3Client } from "@/server/media";
 
 const MEDIA_DIR = path.join(process.cwd(), ".data", "media");
 const MAX_BYTES = 25 * 1024 * 1024;
@@ -29,8 +31,12 @@ export async function saveUploadedMedia(
   file: File,
   fields: { alt?: string; caption?: string; credit?: string; rights?: string } = {},
 ): Promise<{ id: string; storageKey: string }> {
-  if (env.storageDriver !== "local") {
-    throw new HttpError(501, "S3 media storage is not configured in this deployment.");
+  if (env.storageDriver === "s3") {
+    try {
+      assertS3Configured();
+    } catch (error) {
+      throw new HttpError(503, error instanceof Error ? error.message : "S3 media storage is not configured.");
+    }
   }
   if (!file || typeof file.arrayBuffer !== "function") {
     throw new HttpError(400, "Choose a file to upload.");
@@ -68,8 +74,23 @@ export async function saveUploadedMedia(
     }
   }
 
-  await mkdir(MEDIA_DIR, { recursive: true });
-  await writeFile(path.join(MEDIA_DIR, storageKey), buffer, { flag: "wx" });
+  if (env.storageDriver === "s3") {
+    try {
+      await s3Client().send(new PutObjectCommand({
+        Bucket: env.s3.bucket,
+        Key: storageKey,
+        Body: buffer,
+        ContentType: file.type,
+        CacheControl: "private, max-age=0",
+      }));
+    } catch (error) {
+      console.error("S3 media upload failed", error);
+      throw new HttpError(502, "The media storage service could not save this file. Please try again.");
+    }
+  } else {
+    await mkdir(MEDIA_DIR, { recursive: true });
+    await writeFile(path.join(MEDIA_DIR, storageKey), buffer, { flag: "wx" });
+  }
 
   const originalName = (file.name || `upload.${ext}`)
     .replace(/[\u0000-\u001f\u007f]/g, "")
@@ -78,7 +99,7 @@ export async function saveUploadedMedia(
   const [row] = await db
     .insert(mediaAsset)
     .values({
-      storageDriver: "local",
+      storageDriver: env.storageDriver,
       storageKey,
       originalName,
       mimeType: file.type,
